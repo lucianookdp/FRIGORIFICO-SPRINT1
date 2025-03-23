@@ -1,0 +1,127 @@
+/* Container da seção "Quem Somos" na Home */
+.sobre-container {
+    background: #f9f5f0; 
+    padding: 60px 50px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1400px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/*  Caixa de texto */
+.sobre-box {
+    text-align: left;
+    max-width: 1100px;
+    margin: 0 auto 40px auto;
+    border-left: 6px solid #9b6e38;
+    padding-left: 30px;
+    word-wrap: break-word;
+}
+
+/* Título */
+.sobre-box h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #27194e;
+    margin-bottom: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.sobre-box h2 svg {
+    font-size: 32px;
+    color: #9b6e38;
+}
+
+/* Texto */
+.sobre-box p {
+    color: #787092;
+    font-size: 22px;
+    line-height: 1.7;
+    margin-bottom: 18px;
+    word-break: break-word;
+    text-align: justify;
+}
+
+/* Botão "Saiba Mais" */
+.saiba-mais-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #9b6e38;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    margin-top: 15px;
+}
+
+.saiba-mais-btn:hover {
+    background-color: #7b4f2a;
+    transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .sobre-container {
+        max-width: 95vw;
+        padding: 50px 30px;
+    }
+
+    .sobre-box {
+        max-width: 100%;
+        padding-left: 20px;
+    }
+
+    .sobre-box h2 {
+        font-size: 32px;
+    }
+
+    .sobre-box p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sobre-container {
+        padding: 40px 20px;
+    }
+
+    .sobre-box {
+        text-align: center;
+        padding-left: 0;
+        border-left: none;
+    }
+
+    .sobre-box h2 {
+        font-size: 28px;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .sobre-box p {
+        font-size: 18px;
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .sobre-container {
+        padding: 30px 15px;
+    }
+
+    .sobre-box h2 {
+        font-size: 24px;
+    }
+
+    .sobre-box p {
+        font-size: 16px;
+    }
+}

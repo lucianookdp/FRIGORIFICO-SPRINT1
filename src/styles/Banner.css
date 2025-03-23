@@ -1,0 +1,34 @@
+/* Ajuste do Banner Principal */
+.hero-banner {
+    width: 100vw; 
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    margin-top: 80px; 
+}
+
+.banner-image {
+    width: 100vw; 
+    height: auto;
+    max-height: 100vh;
+    object-fit: cover; 
+    display: block;
+}
+
+/* Banner Mobile */
+@media (max-width: 1024px) {
+    .hero-banner {
+        margin-top: 20px;
+    }
+
+    .hero-banner img {
+        content: url("../assets/images/banner2.png");
+        width: 100vw;
+        height: auto;
+        max-height: 100vh;
+        object-fit: cover;
+    }
+}
