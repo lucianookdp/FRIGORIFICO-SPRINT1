@@ -1,31 +1,31 @@
-/* Ajuste do Banner Principal */
+/* Estilos do Banner Principal (Desktop) */
 .hero-banner {
-    width: 100vw; 
+    width: 100vw; /* Banner ocupa toda a largura da viewport */
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     position: relative;
-    margin-top: 80px; 
+    margin-top: 80px; /* Espaçamento superior para evitar sobreposição com o header */
 }
 
 .banner-image {
-    width: 100vw; 
+    width: 100vw; /* Imagem ocupa toda a largura disponível */
     height: auto;
-    max-height: 100vh;
-    object-fit: cover; 
+    max-height: 100vh; /* Altura máxima igual à altura da viewport */
+    object-fit: cover; /* Garante que a imagem cubra toda a área disponível sem distorcer */
     display: block;
 }
 
-/* Banner Mobile */
+/* Ajustes Responsivos para Mobile (abaixo de 1024px) */
 @media (max-width: 1024px) {
     .hero-banner {
-        margin-top: 20px;
+        margin-top: 20px; /* Reduz o espaçamento superior para dispositivos móveis */
     }
 
     .hero-banner img {
-        content: url("../assets/images/banner2.png");
+        content: url("../assets/images/banner2.png"); /* Altera a imagem para uma versão otimizada para mobile */
         width: 100vw;
         height: auto;
         max-height: 100vh;

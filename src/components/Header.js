@@ -13,8 +13,10 @@ import "../styles/Header.css";
 import logo from "../assets/images/logo.png";
 
 const Header = () => {
+  // Estado para controlar abertura/fechamento do menu mobile
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Alterna visibilidade do menu
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -22,17 +24,17 @@ const Header = () => {
   return (
     <header className="header">
       <div className="container">
-        {/* Menu hambúrguer (mobile) */}
+        {/* Botão para abrir/fechar menu no mobile */}
         <button className="menu-toggle" onClick={toggleMenu}>
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
-        {/* Logo (sempre à esquerda no desktop) */}
+        {/* Logotipo da empresa */}
         <Link to="/" className="logo-container">
           <img src={logo} alt="Frigorífico Padilha" className="logo" />
         </Link>
 
-        {/* Menu de navegação */}
+        {/* Menu de navegação principal */}
         <nav className={menuOpen ? "nav-menu active" : "nav-menu"}>
           <ul>
             <li>
@@ -58,7 +60,7 @@ const Header = () => {
           </ul>
         </nav>
 
-        {/* Ícone de login (sempre à direita no desktop) */}
+        {/* Ícone para login do usuário */}
         <div className="user-login">
           <Link to="/usuario">
             <FaUser className="user-icon" />

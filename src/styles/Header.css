@@ -1,9 +1,9 @@
-/* Estilização do Header */
+/* Estilização geral do Header fixo no topo */
 .header {
   background-color: #27194e;
   color: white;
   padding: 10px 0;
-  position: fixed;
+  position: fixed; /* Header fixado no topo da página */
   top: 0;
   width: 100vw;
   z-index: 1000;
@@ -14,6 +14,7 @@
   transition: all 0.3s ease-in-out;
 }
 
+/* Container interno para centralização dos elementos */
 .container {
   display: flex;
   align-items: center;
@@ -23,7 +24,7 @@
   gap: 20px;
 }
 
-/* Logo à esquerda */
+/* Área do logotipo */
 .logo-container {
   display: flex;
   align-items: center;
@@ -35,7 +36,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-/*  Menu centralizado após a logo */
+/* Menu de navegação principal */
 .nav-menu {
   display: flex;
   flex: 1;
@@ -51,6 +52,7 @@
   margin: 0;
 }
 
+/* Itens do menu */
 .nav-menu ul li a {
   color: white;
   text-decoration: none;
@@ -68,6 +70,7 @@
   border: 2px solid transparent;
 }
 
+/* Efeito hover nos itens do menu */
 .nav-menu ul li a:hover {
   color: #fff;
   background: rgba(255, 255, 255, 0.1);
@@ -75,7 +78,7 @@
   box-shadow: 0 0 12px #9b6e38, 0 0 24px #9b6e38 inset;
 }
 
-/* Linha animada ao fundo */
+/* Linha animada que aparece ao passar o mouse nos links */
 .nav-menu ul li a::before {
   content: "";
   position: absolute;
@@ -98,7 +101,7 @@
   z-index: 1;
 }
 
-/*  Ícone do menu hambúrguer */
+/* Botão menu hambúrguer para mobile (inicialmente oculto no desktop) */
 .menu-toggle {
   display: none;
   background: none;
@@ -108,7 +111,7 @@
   cursor: pointer;
 }
 
-/* Ícone de login à direita */
+/* Área de login à direita */
 .user-login {
   display: flex;
   align-items: center;
@@ -136,7 +139,7 @@
   font-size: 22px;
 }
 
-/* Mobile */
+/* Ajustes responsivos para dispositivos móveis abaixo de 900px */
 @media (max-width: 900px) {
   .container {
     justify-content: space-between;
@@ -144,7 +147,7 @@
   }
 
   .menu-toggle {
-    display: block;
+    display: block; /* Exibe botão hambúrguer no mobile */
     order: 1;
   }
 

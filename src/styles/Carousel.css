@@ -1,3 +1,4 @@
+/* Container principal do carrossel */
 .sobre-carousel {
     width: 100%;
     max-width: 1100px; 
@@ -7,9 +8,10 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
 }
 
+/* Container interno que define o tamanho e posicionamento das imagens */
 .carousel-container {
     width: 100%;
-    height: 350px; 
+    height: 350px;
     border-radius: 12px;
     overflow: hidden;
     display: flex;
@@ -18,6 +20,7 @@
     position: relative;
 }
 
+/* Estilos gerais do componente Swiper */
 .swiper {
     width: 100%;
     height: 100%;
@@ -27,6 +30,7 @@
     position: relative;
 }
 
+/* Estilos das imagens dentro dos slides */
 .swiper-slide img {
     width: 100%;
     height: 100%;
@@ -34,6 +38,7 @@
     border-radius: 12px;
 }
 
+/* Botões de navegação (setas anterior e próxima) */
 .swiper-button-prev,
 .swiper-button-next {
     color: white !important;
@@ -53,14 +58,17 @@
     justify-content: center;
 }
 
+/* Posição da seta anterior */
 .swiper-button-prev {
     left: 12px;
 }
 
+/* Posição da seta próxima */
 .swiper-button-next {
     right: 12px;
 }
 
+/* Ajuste dos ícones das setas */
 .swiper-button-prev::after,
 .swiper-button-next::after {
     font-size: 22px !important;
@@ -72,7 +80,7 @@
     top: 0.5px; 
 }
 
-
+/* Estilos dos bullets (pontos de navegação) */
 .swiper-pagination-bullet {
     background-color: white !important;
     width: 10px;
@@ -82,38 +90,41 @@
     border-radius: 50%;
 }
 
+/* Bullet ativo com escala maior */
 .swiper-pagination-bullet-active {
     background-color: white !important;
     transform: scale(1.3);
 }
 
+/* Oculta bullets extras após o sexto elemento */
 .swiper-pagination-bullet:nth-child(n+7) {
     display: none;
 }
 
-/* 📱 Responsividade */
+/* Responsividade para telas menores que 1024px */
 @media (max-width: 1024px) {
     .sobre-carousel {
-        max-width: 95%;
+        max-width: 95%; /* Reduz largura máxima */
     }
 
     .carousel-container {
-        height: 320px;
+        height: 320px; /* Reduz altura */
     }
 }
 
+/* Responsividade adicional para telas menores que 768px */
 @media (max-width: 768px) {
     .sobre-carousel {
         width: 100%;
     }
 
     .carousel-container {
-        height: 300px;
+        height: 300px; /* Altura ainda menor */
     }
 
     .swiper-button-prev,
     .swiper-button-next {
-        font-size: 18px;
+        font-size: 18px; /* Diminui tamanho das setas */
         width: 35px;
         height: 35px;
     }
