@@ -17,7 +17,6 @@
     gap: 10px;
   }
   
-  /* Logo 100% à esquerda */
   .admin-logo-container {
     cursor: pointer;
     flex: 1;
@@ -31,26 +30,41 @@
     transition: all 0.3s ease-in-out;
   }
   
+
   .admin-btn-sair {
     padding: 6px 14px;
     font-size: 14px;
     font-weight: bold;
     background-color: transparent;
-    border: 2px solid white;
+    border: none;
     color: white;
-    border-radius: 6px;
     cursor: pointer;
-    transition: all 0.3s ease;
     white-space: nowrap;
     box-sizing: border-box;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .admin-btn-sair::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #9b6e38;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .admin-btn-sair:hover::after {
+    width: 100%;
   }
   
   .admin-btn-sair:hover {
-    background-color: #fff;
-    color: #27194e;
-    box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;
+    color: #ddd0c2;
   }
   
+  /* Responsivo */
   @media (max-width: 768px) {
     .admin-header {
       flex-direction: row;
@@ -65,7 +79,6 @@
     .admin-btn-sair {
       font-size: 13px;
       padding: 5px 12px;
-      border-width: 1.5px;
     }
   }
   
