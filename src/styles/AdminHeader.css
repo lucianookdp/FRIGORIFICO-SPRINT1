@@ -1,0 +1,71 @@
+.admin-header {
+    background-color: #27194e;
+    border-bottom: 3px solid #9b6e38;
+    color: white;
+    padding: 10px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  /* Logo 100% à esquerda */
+  .admin-logo-container {
+    cursor: pointer;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .admin-logo {
+    height: 70px;
+    max-width: 160px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .admin-btn-sair {
+    padding: 6px 14px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+  
+  .admin-btn-sair:hover {
+    background-color: #fff;
+    color: #27194e;
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff inset;
+  }
+  
+  @media (max-width: 768px) {
+    .admin-header {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 10px 16px;
+    }
+  
+    .admin-logo {
+      height: 60px;
+    }
+  
+    .admin-btn-sair {
+      font-size: 13px;
+      padding: 5px 12px;
+      border-width: 1.5px;
+    }
+  }
+  
