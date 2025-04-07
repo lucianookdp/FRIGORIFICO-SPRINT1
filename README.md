@@ -1,5 +1,5 @@
 1. Clone o projeto:
-git clone https://github.com/lucianookdp/FRIGORIFICO-SPRINT1.git
+git clone https://github.com/lucianookdp/PROJETO_FRIGORIFICO.git
 
 2. Acesse a pasta do projeto:
 cd frigorifico
