@@ -1,0 +1,82 @@
+/*
+  Paleta usada no projeto:
+  - Azul escuro: #27194e
+  - Bege claro: #ddd0c2
+  - Marrom: #9b6e38
+  - Roxo acinzentado: #787092
+  - Lilás acinzentado: #8981ac
+
+  Estilo completo da página de suporte e contato
+*/
+
+.ajuda-container {
+    max-width: 900px;
+    margin: 80px auto 0 auto; /* Adicionado espaçamento no topo */
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .ajuda-titulo {
+    text-align: center;
+    color: #27194e;
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+  .ajuda-subtitulo {
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 40px;
+  }
+  
+  .faq-section h2,
+  .contato-section h2 {
+    color: #27194e;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .faq-item {
+    margin-bottom: 25px;
+    background-color: #f9f9f9;
+    border-left: 6px solid #9b6e38;
+    padding: 20px;
+    border-radius: 6px;
+  }
+  
+  .faq-pergunta {
+    margin: 0 0 10px;
+    color: #787092;
+    font-size: 20px;
+  }
+  
+  .faq-resposta {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .contato-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .contato-section li {
+    margin-bottom: 15px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .contato-section .icon {
+    color: #9b6e38;
+    margin-right: 8px;
+    font-size: 18px;
+  }
+  
+  .contato-section a {
+    color: #27194e;
+    text-decoration: underline;
+  }
+  
