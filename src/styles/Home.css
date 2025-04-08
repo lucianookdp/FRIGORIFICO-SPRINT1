@@ -1,127 +1,125 @@
-/* Container da seção "Quem Somos" na Home */
+/* Container da seção "Compromisso com a Qualidade" */
 .sobre-container {
-    background: #f9f5f0; 
-    padding: 60px 50px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 1400px;
-    margin: 50px auto;
+    background: #f9f5f0;
+    padding: 40px 50px 60px;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0px -4px 12px rgba(0, 0, 0, 0.08);
+    max-width: 100%;
+    margin-top: -2px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Bloco do título e texto */
+  .sobre-box {
     text-align: center;
-}
-
-/*  Caixa de texto */
-.sobre-box {
-    text-align: left;
-    max-width: 1100px;
-    margin: 0 auto 40px auto;
-    border-left: 6px solid #9b6e38;
-    padding-left: 30px;
-    word-wrap: break-word;
-}
-
-/* Título */
-.sobre-box h2 {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 40px;
-    font-weight: bold;
+    max-width: 1000px;
+    margin: 0 auto 50px auto;
+    padding: 0 30px;
+  }
+  
+  /* Título refinado */
+  .sobre-box h2 {
+    font-size: 48px;
+    font-weight: 800;
     color: #27194e;
+    letter-spacing: -0.5px;
     margin-bottom: 25px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.sobre-box h2 svg {
-    font-size: 32px;
-    color: #9b6e38;
-}
-
-/* Texto */
-.sobre-box p {
+  }
+  
+  /* Texto */
+  .sobre-box p {
     color: #787092;
-    font-size: 22px;
-    line-height: 1.7;
-    margin-bottom: 18px;
-    word-break: break-word;
-    text-align: justify;
-}
-
-/* Botão "Saiba Mais" */
-.saiba-mais-btn {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  /* Botão centralizado abaixo do carrossel */
+  .saiba-mais-wrapper.abaixo-carousel {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  
+  /* Botão moderno e elegante */
+  .saiba-mais-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background-color: #9b6e38;
-    color: white;
-    padding: 10px 20px;
-    font-size: 18px;
-    font-weight: bold;
+    gap: 10px;
+    padding: 11px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 999px;
+    background-color: #27194e;
+    color: #ffffff;
     text-decoration: none;
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
-    margin-top: 15px;
-}
-
-.saiba-mais-btn:hover {
-    background-color: #7b4f2a;
-    transform: translateY(-2px);
-}
-
-/* Responsividade */
-@media (max-width: 1024px) {
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+  
+  .saiba-mais-btn:hover {
+    background-color: #3a2674;
+    opacity: 0.92;
+  }
+  
+  /* Carrossel ao lado do texto */
+  .sobre-carousel {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 1024px) {
     .sobre-container {
-        max-width: 95vw;
-        padding: 50px 30px;
+      max-width: 95vw;
+      padding: 40px 30px 60px;
     }
-
+  
     .sobre-box {
-        max-width: 100%;
-        padding-left: 20px;
+      max-width: 100%;
+      padding: 0 20px;
     }
-
+  
     .sobre-box h2 {
-        font-size: 32px;
+      font-size: 36px;
     }
-
+  
     .sobre-box p {
-        font-size: 20px;
+      font-size: 17px;
     }
-}
-
-@media (max-width: 768px) {
+  }
+  
+  @media (max-width: 768px) {
     .sobre-container {
-        padding: 40px 20px;
+      padding: 30px 20px 50px;
     }
-
-    .sobre-box {
-        text-align: center;
-        padding-left: 0;
-        border-left: none;
-    }
-
+  
     .sobre-box h2 {
-        font-size: 28px;
-        flex-direction: column;
-        gap: 8px;
+      font-size: 30px;
     }
-
+  
     .sobre-box p {
-        font-size: 18px;
-        text-align: left;
+      font-size: 16px;
     }
-}
-
-@media (max-width: 480px) {
+  
+    .saiba-mais-btn {
+      font-size: 14px;
+      padding: 10px 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
     .sobre-container {
-        padding: 30px 15px;
+      padding: 25px 15px 45px;
     }
-
+  
     .sobre-box h2 {
-        font-size: 24px;
+      font-size: 26px;
     }
-
+  
     .sobre-box p {
-        font-size: 16px;
+      font-size: 15px;
     }
-}
+  }
+  
