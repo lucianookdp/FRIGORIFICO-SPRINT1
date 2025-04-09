@@ -1,15 +1,16 @@
 /* Container da seção "Compromisso com a Qualidade" */
 .sobre-container {
-    background: #f9f5f0;
-    padding: 40px 50px 60px;
-    border-radius: 0 0 16px 16px;
-    box-shadow: 0px -4px 12px rgba(0, 0, 0, 0.08);
-    max-width: 100%;
-    margin-top: -2px;
-    position: relative;
-    z-index: 1;
-  }
-  
+  background: #f9f5f0;
+  padding: 40px 50px 60px;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0px -4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 100%;
+  margin-top: -2px;
+  position: relative;
+  z-index: 1;
+  overflow: visible; /* 🚨 CORRIGIDO: permite que as setas fiquem visíveis fora do carrossel */
+}
+
   /* Bloco do título e texto */
   .sobre-box {
     text-align: center;

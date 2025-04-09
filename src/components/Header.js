@@ -1,22 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  FaHome,
-  FaInfoCircle,
-  FaBook,
-  FaQuestionCircle,
-  FaBars,
-  FaTimes,
-} from "react-icons/fa";
+  LuInfo,
+  LuBookOpenText,
+  LuCircleHelp,
+  LuMenu,
+  LuX,
+} from "react-icons/lu";
+import { MdHome } from "react-icons/md";
 import "../styles/Header.css";
 import logo from "../assets/images/logo.png";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
     <header className="header">
@@ -28,29 +25,29 @@ const Header = () => {
         </div>
 
         <button className="menu-toggle" onClick={toggleMenu}>
-          {menuOpen ? <FaTimes /> : <FaBars />}
+          {menuOpen ? <LuX /> : <LuMenu />}
         </button>
 
-        <nav className={menuOpen ? "nav-menu active" : "nav-menu"}>
+        <nav className={`nav-menu ${menuOpen ? "active" : ""}`}>
           <ul>
             <li>
               <Link to="/">
-                <FaHome /> <span>Início</span>
+                <MdHome className="icon" /> <span>Início</span>
               </Link>
             </li>
             <li>
               <Link to="/sobre-nos">
-                <FaInfoCircle /> <span>Sobre Nós</span>
+                <LuInfo className="icon" /> <span>Sobre Nós</span>
               </Link>
             </li>
             <li>
               <Link to="/catalogo">
-                <FaBook /> <span>Catálogo</span>
+                <LuBookOpenText className="icon" /> <span>Catálogo</span>
               </Link>
             </li>
             <li>
               <Link to="/ajuda">
-                <FaQuestionCircle /> <span>Ajuda</span>
+                <LuCircleHelp className="icon" /> <span>Ajuda</span>
               </Link>
             </li>
           </ul>
