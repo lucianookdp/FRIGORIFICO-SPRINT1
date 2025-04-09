@@ -30,31 +30,7 @@ const Home = () => (
       <div className="banner-divider" />
     </section>
 
-    {/* Seção de qualidade */}
-    <section className="sobre-container">
-      <div className="sobre-box">
-        <h2>Compromisso com a Qualidade</h2>
-        <p>
-          Aqui no <strong>Frigorífico Padilha</strong>, qualidade significa ir além.
-          Cada corte que oferecemos reflete nossa dedicação em selecionar
-          carnes de procedência confiável, com rigor no preparo e respeito à tradição.
-        </p>
-        <p>
-          Nossa missão é simples: entregar produtos frescos, seguros e com o
-          sabor que a sua mesa merece.
-        </p>
-      </div>
-
-      <div className="sobre-carousel">
-        <Carousel />
-      </div>
-
-      <div className="saiba-mais-wrapper abaixo-carousel">
-        <Link to="/sobre-nos" className="saiba-mais-btn">
-          Saiba Mais <FaArrowRight />
-        </Link>
-      </div>
-    </section>
+    <Carousel />
 
     {/* Destaques */}
     <section className="destaques">

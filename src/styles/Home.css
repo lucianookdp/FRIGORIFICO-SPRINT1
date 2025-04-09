@@ -1,126 +1,68 @@
-/* Container da seção "Compromisso com a Qualidade" */
-.sobre-container {
-  background: #f9f5f0;
-  padding: 40px 50px 60px;
-  border-radius: 0 0 16px 16px;
-  box-shadow: 0px -4px 12px rgba(0, 0, 0, 0.08);
-  max-width: 100%;
-  margin-top: -2px;
-  position: relative;
-  z-index: 1;
-  overflow: visible; /* 🚨 CORRIGIDO: permite que as setas fiquem visíveis fora do carrossel */
+/* Estilos da seção de destaques */
+.destaques {
+  background-color: #ffffff;
+  padding: 60px 20px;
+  text-align: center;
 }
 
-  /* Bloco do título e texto */
-  .sobre-box {
-    text-align: center;
-    max-width: 1000px;
-    margin: 0 auto 50px auto;
-    padding: 0 30px;
-  }
-  
-  /* Título refinado */
-  .sobre-box h2 {
-    font-size: 48px;
-    font-weight: 800;
-    color: #27194e;
-    letter-spacing: -0.5px;
-    margin-bottom: 25px;
-  }
-  
-  /* Texto */
-  .sobre-box p {
-    color: #787092;
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 10px;
-  }
-  
-  /* Botão centralizado abaixo do carrossel */
-  .saiba-mais-wrapper.abaixo-carousel {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-  }
-  
-  /* Botão moderno e elegante */
-  .saiba-mais-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 11px 24px;
-    font-size: 15px;
-    font-weight: 600;
-    border-radius: 999px;
-    background-color: #27194e;
-    color: #ffffff;
-    text-decoration: none;
-    transition: background-color 0.3s ease, opacity 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  }
-  
-  .saiba-mais-btn:hover {
-    background-color: #3a2674;
-    opacity: 0.92;
-  }
-  
-  /* Carrossel ao lado do texto */
-  .sobre-carousel {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* Responsividade */
-  @media (max-width: 1024px) {
-    .sobre-container {
-      max-width: 95vw;
-      padding: 40px 30px 60px;
-    }
-  
-    .sobre-box {
-      max-width: 100%;
-      padding: 0 20px;
-    }
-  
-    .sobre-box h2 {
-      font-size: 36px;
-    }
-  
-    .sobre-box p {
-      font-size: 17px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .sobre-container {
-      padding: 30px 20px 50px;
-    }
-  
-    .sobre-box h2 {
-      font-size: 30px;
-    }
-  
-    .sobre-box p {
-      font-size: 16px;
-    }
-  
-    .saiba-mais-btn {
-      font-size: 14px;
-      padding: 10px 20px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .sobre-container {
-      padding: 25px 15px 45px;
-    }
-  
-    .sobre-box h2 {
-      font-size: 26px;
-    }
-  
-    .sobre-box p {
-      font-size: 15px;
-    }
-  }
-  
+.destaques h2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #27194e;
+  margin-bottom: 40px;
+}
+
+.destaques .icon {
+  margin-right: 10px;
+  color: #9b6e38;
+}
+
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.produto-card {
+  background: #fefefe;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.produto-card:hover {
+  transform: translateY(-5px);
+}
+
+.imagem-fake {
+  width: 100%;
+  height: 180px;
+  background-color: #ddd0c2;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.icone-imagem {
+  font-size: 48px;
+  color: #9b6e38;
+}
+
+.produto-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #27194e;
+  margin-bottom: 10px;
+}
+
+.preco {
+  font-size: 18px;
+  font-weight: 500;
+  color: #787092;
+}
