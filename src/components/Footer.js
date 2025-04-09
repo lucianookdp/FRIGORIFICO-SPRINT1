@@ -44,7 +44,7 @@ const Footer = () => {
               <FaInstagram />
             </a>
             <a
-              href="https://wa.me/5542991121372?text=Ol%C3%A1%2C%20vim%20pelo%20site!%20Poderia%20me%20ajudar%3F"
+              href="https://api.whatsapp.com/send?phone=5542991121372&text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Frigor%C3%ADfico%20Padilha!%20Poderia%20me%20ajudar%3F"
               className="social-button whatsapp"
               target="_blank"
               rel="noreferrer"
