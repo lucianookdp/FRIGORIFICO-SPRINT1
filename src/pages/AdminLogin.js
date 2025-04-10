@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "../styles/AdminLogin.css";
+import { loginAdmin } from "../api/authService";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -13,14 +14,26 @@ const AdminLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!email || !senha) {
+    if (!email.trim() || !senha.trim()) {
       setErro("Preencha todos os campos.");
       return;
     }
 
-    // Aqui entra o fetch para o back-end mais tarde
-    console.log("Login admin:", email, senha);
-    navigate("/admin/dashboard");
+    const result = await loginAdmin(email, senha);
+    console.log("Resposta do back-end:", result); // 👈 debug no console
+
+    if (result.success) {
+      localStorage.setItem("token", result.token);
+      navigate("/admin/dashboard");
+    } else {
+      if (result.message === "Usuário não encontrado") {
+        setErro("E-mail não cadastrado.");
+      } else if (result.message === "Senha incorreta") {
+        setErro("Senha incorreta.");
+      } else {
+        setErro(result.message || "Erro ao fazer login. Tente novamente.");
+      }
+    }
   };
 
   return (
@@ -35,7 +48,10 @@ const AdminLogin = () => {
             id="email"
             placeholder="Digite seu e-mail"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setErro(""); // limpa erro ao digitar
+            }}
           />
 
           <label htmlFor="senha">Senha</label>
@@ -45,7 +61,10 @@ const AdminLogin = () => {
               id="senha"
               placeholder="Digite sua senha"
               value={senha}
-              onChange={(e) => setSenha(e.target.value)}
+              onChange={(e) => {
+                setSenha(e.target.value);
+                setErro(""); // limpa erro ao digitar
+              }}
             />
             <span
               className="icone-olho"
