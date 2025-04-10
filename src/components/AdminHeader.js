@@ -7,14 +7,19 @@ const AdminHeader = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    console.log("Logout realizado");
+
+    localStorage.removeItem("token");
     navigate("/");
   };
 
   return (
     <header className="admin-header">
       {/* Logotipo colado à esquerda */}
-      <div className="admin-logo-container" onClick={() => navigate("/admin/dashboard")}>
+      <div
+        className="admin-logo-container"
+        onClick={() => navigate("/admin/dashboard")}
+        style={{ cursor: "pointer" }}
+      >
         <img src={logo} alt="Frigorífico Padilha" className="admin-logo" />
       </div>
 
