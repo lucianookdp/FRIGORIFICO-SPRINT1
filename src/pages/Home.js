@@ -1,6 +1,5 @@
-import React from "react";
-import { FaArrowRight, FaImage } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { FaArrowRight } from "react-icons/fa";
 
 import "../styles/Banner.css";
 import "../styles/Home.css";
@@ -11,53 +10,79 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Carousel from "../components/Carousel";
 
+import api, { API_BASE } from "../api/api";
+
 import bannerImage from "../assets/images/banner.png";
 import bannerMobile from "../assets/images/banner2.png";
 
-const Home = () => (
-  <div>
-    <Header />
+const Home = () => {
+  const [destaques, setDestaques] = useState([]);
 
-    <section className="hero-banner">
-      <picture>
-        <source srcSet={bannerMobile} media="(max-width: 768px)" />
-        <img
-          src={bannerImage}
-          alt="Frigorífico Padilha"
-          className="banner-image"
-        />
-      </picture>
-      <div className="banner-divider" />
-    </section>
+  useEffect(() => {
+    const carregarDestaques = async () => {
+      try {
+        const response = await api.get("/produtos/destaques");
+        setDestaques(response.data);
+      } catch (error) {
+        console.error("Erro ao carregar produtos em destaque:", error);
+      }
+    };
 
-    <Carousel />
+    carregarDestaques();
+  }, []);
 
-    {/* Destaques */}
-    <section className="destaques">
-      <h2>
-        <FaArrowRight className="icon" /> Produtos Destaques
-      </h2>
+  return (
+    <div>
+      <Header />
 
-      <div className="produtos-grid">
-        {[
-          ["Picanha Bovina Premium", "R$ 79,90/kg"],
-          ["Costela no Bafo", "R$ 59,90/kg"],
-          ["Fraldinha Temperada", "R$ 52,90/kg"],
-          ["Filé Suíno", "R$ 36,90/kg"],
-        ].map(([title, price], index) => (
-          <div className="produto-card" key={index}>
-            <div className="imagem-fake">
-              <FaImage className="icone-imagem" />
-            </div>
-            <h3>{title}</h3>
-            <span className="preco">{price}</span>
-          </div>
-        ))}
-      </div>
-    </section>
+      <section className="hero-banner">
+        <picture>
+          <source srcSet={bannerMobile} media="(max-width: 768px)" />
+          <img
+            src={bannerImage}
+            alt="Frigorífico Padilha"
+            className="banner-image"
+          />
+        </picture>
+        <div className="banner-divider" />
+      </section>
 
-    <Footer />
-  </div>
-);
+      {/* Destaques */}
+      <section className="destaques">
+        <h2>
+          <FaArrowRight className="icon" /> Produtos Destaques
+        </h2>
+
+        <div className="produtos-grid">
+          {destaques.length > 0 ? (
+            destaques.map((produto) => (
+              <div className="produto-card" key={produto.id}>
+                <img
+                  src={`${API_BASE}${produto.foto}`}
+                  alt={produto.titulo}
+                  className="imagem-produto"
+                />
+                <div className="info-produto">
+                  <h3>{produto.titulo}</h3>
+                  <p className="descricao">{produto.descricao}</p>
+                  <span className="preco">
+                    {Number(produto.valorKg).toFixed(2)} R$/kg
+                  </span>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p style={{ marginTop: "20px", color: "#666" }}>
+              Nenhum produto em destaque no momento.
+            </p>
+          )}
+        </div>
+      </section>
+
+      <Carousel />
+      <Footer />
+    </div>
+  );
+};
 
 export default Home;
