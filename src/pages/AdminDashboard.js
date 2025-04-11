@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaPlus, FaClipboardList, FaEdit, FaTrash } from "react-icons/fa";
 import AdminHeader from "../components/AdminHeader";
-import API_URL from "../api/api";
-import BASE_URL from "../api/baseUrl";
+import api, { API_BASE } from "../api/api";
 import ProdutoModal from "../components/ProdutoModal";
 import "../styles/AdminDashboard.css";
 import "../styles/ModalAdicionarProduto.css";
@@ -23,18 +22,11 @@ const AdminDashboard = () => {
 
   const buscarProdutos = async () => {
     try {
-      const token = localStorage.getItem("token");
-      const response = await fetch(`${API_URL}/produtos`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const data = await response.json();
-      if (response.ok) {
-        setProdutos(data);
-      } else {
-        setErro(data.message || "Erro ao carregar produtos.");
-      }
+      const response = await api.get("/produtos");
+      setProdutos(response.data);
     } catch (error) {
-      setErro("Erro na conexão com o servidor.");
+      console.error("Erro ao buscar produtos:", error);
+      setErro("Erro ao carregar produtos.");
     }
   };
 
@@ -48,44 +40,42 @@ const AdminDashboard = () => {
     formData.append("titulo", titulo);
     formData.append("descricao", descricao);
     formData.append("valorKg", valorKg);
-    if (foto) formData.append("foto", foto);
+
+    if (foto) {
+      formData.append("foto", foto);
+    } else if (editandoId) {
+      const produtoAtual = produtos.find((p) => p.id === editandoId);
+      if (produtoAtual?.foto) {
+        formData.append("foto", produtoAtual.foto); // foto antiga
+      }
+    }
 
     try {
-      const token = localStorage.getItem("token");
-      const url = editandoId
-        ? `${API_URL}/produtos/${editandoId}`
-        : `${API_URL}/produtos`;
-      const method = editandoId ? "PUT" : "POST";
+      const response = editandoId
+        ? await api.put(`/produtos/${editandoId}`, formData)
+        : await api.post("/produtos", formData);
 
-      const response = await fetch(url, {
-        method,
-        headers: { Authorization: `Bearer ${token}` },
-        body: formData,
-      });
-
-      const data = await response.json();
-      if (response.ok) {
+      if (response.status === 200 || response.status === 201) {
         limparFormulario();
         buscarProdutos();
       } else {
-        alert(data.message || "Erro ao salvar produto.");
+        alert(response.data?.message || "Erro ao salvar produto.");
       }
     } catch (error) {
-      alert("Erro ao conectar com o servidor.");
+      console.error("❌ Erro ao salvar produto:", error);
+      alert(
+        error?.response?.data?.message ||
+          "Erro ao salvar produto. Verifique os dados e tente novamente."
+      );
     }
   };
 
   const removerProduto = async (id) => {
     try {
-      const token = localStorage.getItem("token");
-      const response = await fetch(`${API_URL}/produtos/${id}`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      if (response.ok) buscarProdutos();
-      else alert("Erro ao remover produto.");
+      await api.delete(`/produtos/${id}`);
+      buscarProdutos();
     } catch (error) {
+      console.error("Erro ao remover produto:", error);
       alert("Erro ao remover produto.");
     }
   };
@@ -94,7 +84,7 @@ const AdminDashboard = () => {
     setTitulo(produto.titulo);
     setDescricao(produto.descricao);
     setValorKg(produto.valorKg);
-    setFoto(null);
+    setFoto(null); // não preenche nova imagem por padrão
     setEditandoId(produto.id);
     setMostrarFormulario(true);
   };
@@ -121,24 +111,13 @@ const AdminDashboard = () => {
     }
 
     try {
-      const token = localStorage.getItem("token");
-      const response = await fetch(`${API_URL}/produtos/${produtoId}/destaque`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ destaque: !valorAtual }),
+      await api.patch(`/produtos/${produtoId}/destaque`, {
+        destaque: !valorAtual,
       });
-
-      const data = await response.json();
-      if (response.ok) {
-        buscarProdutos();
-      } else {
-        alert(data.message || "Erro ao alterar destaque.");
-      }
+      buscarProdutos();
     } catch (error) {
-      alert("Erro na conexão com o servidor.");
+      console.error("Erro ao alterar destaque:", error);
+      alert("Erro ao alterar destaque.");
     }
   };
 
@@ -148,10 +127,7 @@ const AdminDashboard = () => {
 
       <div className="produtos-container" style={{ paddingTop: "140px" }}>
         <div className="topo-painel">
-          <button
-            className="btn-adicionar"
-            onClick={() => setMostrarFormulario(true)}
-          >
+          <button className="btn-adicionar" onClick={() => setMostrarFormulario(true)}>
             <FaPlus /> Adicionar Novo Produto
           </button>
           <button className="btn-logs" onClick={verLogs}>
@@ -180,28 +156,20 @@ const AdminDashboard = () => {
               <tr key={p.id}>
                 <td>
                   <img
-                    src={`${BASE_URL}${p.foto}`}
+                    src={`${API_BASE}${p.foto}`}
                     alt="Produto"
                     className="imagem-produto"
                   />
                 </td>
                 <td className="coluna-titulo">{p.titulo}</td>
                 <td className="coluna-descricao">{p.descricao}</td>
-                <td className="coluna-valor">
-                  {Number(p.valorKg).toFixed(2)} R$
-                </td>
+                <td className="coluna-valor">{Number(p.valorKg).toFixed(2)} R$</td>
                 <td className="coluna-acoes">
                   <div className="botoes-wrapper">
-                    <button
-                      className="btn-editar"
-                      onClick={() => editarProduto(p)}
-                    >
+                    <button className="btn-editar" onClick={() => editarProduto(p)}>
                       <FaEdit /> Editar
                     </button>
-                    <button
-                      className="btn-remover"
-                      onClick={() => removerProduto(p.id)}
-                    >
+                    <button className="btn-remover" onClick={() => removerProduto(p.id)}>
                       <FaTrash /> Remover
                     </button>
                     <button

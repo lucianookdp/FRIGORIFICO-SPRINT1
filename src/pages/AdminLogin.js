@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "../styles/AdminLogin.css";
-import { loginAdmin } from "../api/authService";
+import { loginAdmin } from "../api/api";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
