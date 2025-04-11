@@ -113,3 +113,29 @@
     background-color: #24203a;
   }
   
+  /* Checkbox de destaque */
+.checkbox-destaque {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #dcd0f5;
+  background-color: #2a2540;
+  border: 1px solid #3b3553;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.3s ease;
+}
+
+.checkbox-destaque:hover {
+  border-color: #a884ff;
+}
+
+.checkbox-destaque input[type="checkbox"] {
+  transform: scale(1.2);
+  accent-color: #a884ff;
+  cursor: pointer;
+}

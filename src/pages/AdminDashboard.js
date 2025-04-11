@@ -1,5 +1,3 @@
-// App.js ou AdminDashboard.jsx
-
 import React, { useEffect, useState } from "react";
 import { FaPlus, FaClipboardList, FaEdit, FaTrash } from "react-icons/fa";
 import AdminHeader from "../components/AdminHeader";
@@ -114,6 +112,36 @@ const AdminDashboard = () => {
     window.location.href = "/admin/orcamentos";
   };
 
+  const alternarDestaque = async (produtoId, valorAtual) => {
+    const totalDestaques = produtos.filter((p) => p.destaque).length;
+
+    if (!valorAtual && totalDestaques >= 4) {
+      alert("Você só pode ter no máximo 4 produtos em destaque.");
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(`${API_URL}/produtos/${produtoId}/destaque`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ destaque: !valorAtual }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        buscarProdutos();
+      } else {
+        alert(data.message || "Erro ao alterar destaque.");
+      }
+    } catch (error) {
+      alert("Erro na conexão com o servidor.");
+    }
+  };
+
   return (
     <>
       <AdminHeader onLogout={() => (window.location.href = "/")} />
@@ -175,6 +203,12 @@ const AdminDashboard = () => {
                       onClick={() => removerProduto(p.id)}
                     >
                       <FaTrash /> Remover
+                    </button>
+                    <button
+                      className={`btn-destaque ${p.destaque ? "ativo" : ""}`}
+                      onClick={() => alternarDestaque(p.id, p.destaque)}
+                    >
+                      {p.destaque ? "Remover Destaque" : "Adicionar Destaque"}
                     </button>
                   </div>
                 </td>

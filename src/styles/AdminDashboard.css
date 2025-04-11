@@ -220,3 +220,22 @@
     justify-content: center;
   }
 }
+
+.btn-destaque {
+  background-color: #9b6e38;
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  cursor: pointer;
+  margin-left: 8px;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-destaque:hover {
+  background-color: #7f562d;
+}
+
+.btn-destaque.ativo {
+  background-color: #555;
+}
