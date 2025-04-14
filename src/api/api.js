@@ -25,7 +25,7 @@ const loginAdmin = async (email, senha) => {
     const response = await api.post("/auth/login", { email, senha });
     return response.data;
   } catch (error) {
-    console.error("❌ Erro ao fazer login:", error);
+    console.error("Erro ao fazer login:", error);
 
     const message =
       error?.response?.data?.message ||

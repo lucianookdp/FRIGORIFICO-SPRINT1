@@ -5,6 +5,7 @@ import SobreNos from "./pages/SobreNos";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import Ajuda from "./pages/Ajuda"; 
+import Catalogo from "./pages/Catalogo";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/ajuda" element={<Ajuda />} /> 
+        <Route path="/catalogo" element={<Catalogo />} />
       </Routes>
     </Router>
   );
