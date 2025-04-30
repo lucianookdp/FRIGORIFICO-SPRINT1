@@ -23,14 +23,14 @@ function Ajuda() {
           <div className="faq-item">
             <h3 className="faq-pergunta">Como faço para solicitar um orçamento?</h3>
             <p className="faq-resposta">
-              Acesse a página de catálogo, selecione os cortes desejados e clique em "Solicitar Orçamento". Você pode enviar pelo WhatsApp ou e-mail.
+              Acesse a página de catálogo, selecione os cortes desejados e clique em "Solicitar Orçamento". Você pode enviar pelo WhatsApp.
             </p>
           </div>
 
           <div className="faq-item">
             <h3 className="faq-pergunta">O site mostra preços atualizados?</h3>
             <p className="faq-resposta">
-              Os valores exibidos são aproximados. Para valores atuais, entre em contato conosco.
+              Os valores exibidos são aproximados. Para valores corretos, entre em contato conosco.
             </p>
           </div>
 
@@ -45,19 +45,19 @@ function Ajuda() {
         {/* Contato */}
         <section className="contato-section">
           <h2>Fale com a gente</h2>
-          <p>Se sua dúvida não foi resolvida acima, você pode entrar em contato diretamente:</p>
+          <h3>Se sua dúvida não foi resolvida, entre em contato conosco diretamente:</h3>
           <ul>
             <li>
-              <FiPhone className="icon" /> <strong>Telefone:</strong> (42) 1234-5678
+              <FiPhone className="icon" /> <strong>Telefone:</strong>&nbsp; (42) 3623-6627
             </li>
             <li>
               <FiMessageCircle className="icon" /> <strong>WhatsApp:</strong>{" "}
               <a href="https://wa.me/554212345678" target="_blank" rel="noopener noreferrer">
-                Clique aqui para nos chamar
+              &nbsp;Clique aqui para nos chamar
               </a>
             </li>
             <li>
-              <FiMail className="icon" /> <strong>E-mail:</strong> atendimento@padilhaeduda.com
+              <FiMail className="icon" /><strong>E-mail:</strong>&nbsp;padilha.dudafrigorificoltda@hotmail.com
             </li>
           </ul>
         </section>

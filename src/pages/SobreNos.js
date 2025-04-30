@@ -27,7 +27,7 @@ const SobreNos = () => (
       <div className="sobre-bloco">
         <FaRegBuilding className="bloco-icon" />
         <p>
-          Fundado em 2012 na cidade de Guarapuava, o <strong>Frigorífico Padilha</strong> nasceu com o propósito de oferecer o que há de melhor em carnes bovinas, suínas e de aves. Desde o início, construímos uma trajetória baseada em seriedade, responsabilidade e respeito com clientes, parceiros e colaboradores.
+          Fundado em 2000 na cidade de Guarapuava, o <strong>Frigorífico Padilha</strong> nasceu com o propósito de oferecer o que há de melhor em carnes bovinas, suínas e de aves. Desde o início, construímos uma trajetória baseada em seriedade, responsabilidade e respeito com clientes, parceiros e colaboradores.
         </p>
       </div>
 
@@ -41,7 +41,7 @@ const SobreNos = () => (
       <div className="sobre-bloco">
         <FaBoxOpen className="bloco-icon" />
         <p>
-          Nosso portfólio é amplo e diversificado, indo desde os cortes tradicionais até linhas especiais. Oferecemos hambúrgueres artesanais, linguiças defumadas, carnes para churrasco e opções práticas para o dia a dia, sempre com foco em sabor, praticidade e qualidade.
+          Nosso portfólio é amplo e diversificado, desde cortes tradicionais até linhas especiais. Oferecemos linguiças defumadas, carnes para churrasco e opções práticas para o dia a dia, sempre com foco em sabor, praticidade e qualidade.
         </p>
       </div>
 

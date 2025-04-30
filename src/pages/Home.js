@@ -15,6 +15,8 @@ import api, { API_BASE } from "../api/api";
 import bannerImage from "../assets/images/banner.png";
 import bannerMobile from "../assets/images/banner2.png";
 
+//no bannerImage, tirar o 'Produtos de Guarapuava'
+
 const Home = () => {
   const [destaques, setDestaques] = useState([]);
 
@@ -50,7 +52,7 @@ const Home = () => {
       {/* Destaques */}
       <section className="destaques">
         <h2>
-          <FaArrowRight className="icon" /> Produtos Destaques
+          <FaArrowRight className="icon" /> Produtos em Destaque
         </h2>
 
         <div className="produtos-grid">
