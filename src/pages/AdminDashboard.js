@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { FaPlus, FaClipboardList, FaEdit, FaTrash } from "react-icons/fa";
+import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import AdminHeader from "../components/AdminHeader";
-import api, { API_BASE } from "../api/api";
 import ProdutoModal from "../components/ProdutoModal";
+import Filtros from "../components/Filtros";
+import api, { API_BASE } from "../api/api";
 import "../styles/AdminDashboard.css";
 import "../styles/ModalAdicionarProduto.css";
 
 const AdminDashboard = () => {
   const [produtos, setProdutos] = useState([]);
+  const [produtosFiltrados, setProdutosFiltrados] = useState([]);
   const [erro, setErro] = useState("");
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [editandoId, setEditandoId] = useState(null);
@@ -15,6 +17,7 @@ const AdminDashboard = () => {
   const [descricao, setDescricao] = useState("");
   const [valorKg, setValorKg] = useState("");
   const [foto, setFoto] = useState(null);
+  const [categoria, setCategoria] = useState("Carne Bovina");
 
   useEffect(() => {
     buscarProdutos();
@@ -24,6 +27,7 @@ const AdminDashboard = () => {
     try {
       const response = await api.get("/produtos");
       setProdutos(response.data);
+      setProdutosFiltrados(response.data);
     } catch (error) {
       console.error("Erro ao buscar produtos:", error);
       setErro("Erro ao carregar produtos.");
@@ -31,7 +35,7 @@ const AdminDashboard = () => {
   };
 
   const salvarProduto = async () => {
-    if (!titulo || !descricao || !valorKg || (!foto && !editandoId)) {
+    if (!titulo || !descricao || !valorKg || !categoria || (!foto && !editandoId)) {
       alert("Preencha todos os campos e selecione uma imagem.");
       return;
     }
@@ -40,13 +44,14 @@ const AdminDashboard = () => {
     formData.append("titulo", titulo);
     formData.append("descricao", descricao);
     formData.append("valorKg", valorKg);
+    formData.append("categoria", categoria);
 
     if (foto) {
       formData.append("foto", foto);
     } else if (editandoId) {
       const produtoAtual = produtos.find((p) => p.id === editandoId);
       if (produtoAtual?.foto) {
-        formData.append("foto", produtoAtual.foto); // foto antiga
+        formData.append("foto", produtoAtual.foto);
       }
     }
 
@@ -62,11 +67,8 @@ const AdminDashboard = () => {
         alert(response.data?.message || "Erro ao salvar produto.");
       }
     } catch (error) {
-      console.error("❌ Erro ao salvar produto:", error);
-      alert(
-        error?.response?.data?.message ||
-          "Erro ao salvar produto. Verifique os dados e tente novamente."
-      );
+      console.error("Erro ao salvar produto:", error);
+      alert(error?.response?.data?.message || "Erro ao salvar produto. Verifique os dados e tente novamente.");
     }
   };
 
@@ -84,7 +86,8 @@ const AdminDashboard = () => {
     setTitulo(produto.titulo);
     setDescricao(produto.descricao);
     setValorKg(produto.valorKg);
-    setFoto(null); // não preenche nova imagem por padrão
+    setCategoria(produto.categoria || "Carne Bovina");
+    setFoto(null);
     setEditandoId(produto.id);
     setMostrarFormulario(true);
   };
@@ -93,13 +96,10 @@ const AdminDashboard = () => {
     setTitulo("");
     setDescricao("");
     setValorKg("");
+    setCategoria("Carne Bovina");
     setFoto(null);
     setEditandoId(null);
     setMostrarFormulario(false);
-  };
-
-  const verLogs = () => {
-    window.location.href = "/admin/orcamentos";
   };
 
   const alternarDestaque = async (produtoId, valorAtual) => {
@@ -123,16 +123,21 @@ const AdminDashboard = () => {
 
   return (
     <>
-      <AdminHeader onLogout={() => (window.location.href = "/")} />
+      <AdminHeader />
 
       <div className="produtos-container" style={{ paddingTop: "140px" }}>
-        <div className="topo-painel">
-          <button className="btn-adicionar" onClick={() => setMostrarFormulario(true)}>
-            <FaPlus /> Adicionar Novo Produto
-          </button>
-          <button className="btn-logs" onClick={verLogs}>
-            <FaClipboardList /> Ver Logs de Orçamentos
-          </button>
+        {/* Linha superior: Filtros + Botão + Total */}
+        <div className="linha-superior">
+          <Filtros produtos={produtos} onFiltroAtualizado={setProdutosFiltrados} />
+
+          <div className="painel-botoes">
+            <button className="btn-adicionar" onClick={() => setMostrarFormulario(true)}>
+              <FaPlus /> Novo Produto
+            </button>
+            <div className="info-itens">
+              Total: {produtosFiltrados.length}
+            </div>
+          </div>
         </div>
 
         {erro && (
@@ -148,11 +153,12 @@ const AdminDashboard = () => {
               <th>TÍTULO</th>
               <th>DESCRIÇÃO</th>
               <th>VALOR (KG)</th>
+              <th>CATEGORIA</th>
               <th>AÇÃO</th>
             </tr>
           </thead>
           <tbody>
-            {produtos.map((p) => (
+            {produtosFiltrados.map((p) => (
               <tr key={p.id}>
                 <td>
                   <img
@@ -164,6 +170,7 @@ const AdminDashboard = () => {
                 <td className="coluna-titulo">{p.titulo}</td>
                 <td className="coluna-descricao">{p.descricao}</td>
                 <td className="coluna-valor">{Number(p.valorKg).toFixed(2)} R$</td>
+                <td className="coluna-categoria">{p.categoria}</td>
                 <td className="coluna-acoes">
                   <div className="botoes-wrapper">
                     <button className="btn-editar" onClick={() => editarProduto(p)}>
@@ -192,9 +199,11 @@ const AdminDashboard = () => {
           titulo={titulo}
           descricao={descricao}
           valorKg={valorKg}
+          categoria={categoria}
           setTitulo={setTitulo}
           setDescricao={setDescricao}
           setValorKg={setValorKg}
+          setCategoria={setCategoria}
           setFoto={setFoto}
           onSalvar={salvarProduto}
           onCancelar={limparFormulario}

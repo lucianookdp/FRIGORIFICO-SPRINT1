@@ -1,0 +1,82 @@
+.filtros-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+    flex-wrap: wrap;
+    background-color: #0e0b1b;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* Campos de filtro */
+  .filtro-categoria,
+  .filtro-nome {
+    padding: 0.6rem 1rem;
+    font-size: 0.92rem;
+    border-radius: 10px;
+    border: 1px solid #38334c;
+    background-color: #1a162c;
+    color: white;
+    outline: none;
+    min-width: 200px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Foco nos campos */
+  .filtro-categoria:focus,
+  .filtro-nome:focus {
+    border-color: #9b6e38;
+    box-shadow: 0 0 0 2px #9b6e3844;
+  }
+  
+  /* Botão de resetar filtros */
+  .btn-resetar-filtros {
+    background-color: #1a162c;
+    border: 1px solid #38334c;
+    color: white;
+    padding: 0.6rem;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    min-width: 48px;
+    height: 48px;
+  }
+  
+  .btn-resetar-filtros:hover {
+    background-color: #241d3b;
+    border-color: #9b6e38;
+    color: #ddd0c2;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(155, 110, 56, 0.2);
+  }
+  
+  /* Ícone de Refresh mais alinhado */
+  .btn-resetar-filtros svg {
+    font-size: 18px;
+  }
+  
+  /* RESPONSIVO */
+  @media (max-width: 768px) {
+    .filtros-container {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+      padding: 1rem;
+    }
+  
+    .filtro-categoria,
+    .filtro-nome {
+      width: 100%;
+    }
+  
+    .btn-resetar-filtros {
+      width: 100%;
+      min-height: 45px;
+    }
+  }
+  

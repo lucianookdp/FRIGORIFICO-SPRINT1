@@ -1,84 +1,118 @@
 .admin-header {
-    background-color: #27194e;
-    border-bottom: 3px solid #9b6e38;
-    color: white;
-    padding: 10px 30px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  .admin-logo-container {
-    cursor: pointer;
-    flex: 1;
-    display: flex;
-    justify-content: flex-start;
-  }
-  
-  .admin-logo {
-    height: 70px;
-    max-width: 160px;
-    transition: all 0.3s ease-in-out;
-  }
-  
+  background-color: #27194e;
+  border-bottom: 3px solid #9b6e38;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
 
+.admin-header-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.admin-logo-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+
+.admin-logo {
+  height: 100px;
+  max-width: 200px;
+  object-fit: contain;
+  transition: all 0.3s ease-in-out;
+}
+
+.admin-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* BOTÕES */
+.admin-btn-logs,
+.admin-btn-sair {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 18px;
+  font-size: 17px;
+  font-weight: 600;
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  white-space: nowrap;
+  box-sizing: border-box;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.admin-btn-logs svg,
+.admin-btn-sair svg {
+  vertical-align: middle;
+  font-size: 19px;
+}
+
+.admin-btn-logs::after,
+.admin-btn-sair::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #9b6e38;
+  transition: width 0.3s ease-in-out;
+}
+
+.admin-btn-logs:hover::after,
+.admin-btn-sair:hover::after {
+  width: 100%;
+}
+
+.admin-btn-logs:hover,
+.admin-btn-sair:hover {
+  color: #ddd0c2;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .admin-header-container {
+    padding: 12px 24px;
+  }
+
+  .admin-logo {
+    height: 80px;
+    max-width: 160px;
+  }
+
+  .admin-actions {
+    gap: 12px;
+  }
+
+  .admin-btn-logs,
   .admin-btn-sair {
-    padding: 6px 14px;
-    font-size: 14px;
-    font-weight: bold;
-    background-color: transparent;
-    border: none;
-    color: white;
-    cursor: pointer;
-    white-space: nowrap;
-    box-sizing: border-box;
-    position: relative;
-    transition: color 0.3s ease;
+    font-size: 16px;
+    padding: 8px 14px;
   }
-  
-  .admin-btn-sair::after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background-color: #9b6e38;
-    transition: width 0.3s ease-in-out;
+
+  .admin-btn-logs svg,
+  .admin-btn-sair svg {
+    font-size: 18px;
   }
-  
-  .admin-btn-sair:hover::after {
-    width: 100%;
-  }
-  
-  .admin-btn-sair:hover {
-    color: #ddd0c2;
-  }
-  
-  /* Responsivo */
-  @media (max-width: 768px) {
-    .admin-header {
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 10px 16px;
-    }
-  
-    .admin-logo {
-      height: 60px;
-    }
-  
-    .admin-btn-sair {
-      font-size: 13px;
-      padding: 5px 12px;
-    }
-  }
-  
+}
