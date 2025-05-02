@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { FiRefreshCcw } from "react-icons/fi"; // Ícone bonito de refresh
+import { FiRefreshCcw } from "react-icons/fi";
 import "../styles/Filtros.css";
 
-const Filtros = ({ produtos, onFiltroAtualizado }) => {
+const Filtros = ({ produtos, onFiltroAtualizado, classeExtra = "" }) => {
   const [categoriaAtual, setCategoriaAtual] = useState("Todas");
   const [textoAtual, setTextoAtual] = useState("");
 
@@ -35,7 +35,7 @@ const Filtros = ({ produtos, onFiltroAtualizado }) => {
   };
 
   return (
-    <div className="filtros-container">
+    <div className={`filtros-container ${classeExtra}`}>
       <select
         value={categoriaAtual}
         onChange={(e) => setCategoriaAtual(e.target.value)}

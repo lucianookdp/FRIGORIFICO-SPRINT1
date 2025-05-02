@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import "../styles/Catalogo.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Filtros from "../components/Filtros"; // Importando o componente de filtros
 import api, { API_BASE } from "../api/api";
+import "../styles/Catalogo.css";
 
 const Catalogo = () => {
   const [destaques, setDestaques] = useState([]);
-  const [produtos, setProdutos] = useState([]);
+  const [todosProdutos, setTodosProdutos] = useState([]);
+  const [produtosFiltrados, setProdutosFiltrados] = useState([]);
 
   useEffect(() => {
     const carregarDados = async () => {
@@ -15,7 +17,8 @@ const Catalogo = () => {
         const resTodos = await api.get("/produtos");
 
         setDestaques(resDestaques.data);
-        setProdutos(resTodos.data);
+        setTodosProdutos(resTodos.data);
+        setProdutosFiltrados(resTodos.data); // Inicializa filtrados também
       } catch (error) {
         console.error("Erro ao carregar catálogo:", error);
       }
@@ -46,6 +49,7 @@ const Catalogo = () => {
       <Header />
 
       <section className="catalogo">
+        {/* Destaques */}
         <h1>Produtos em Destaque</h1>
         <div className="produtos-grid">
           {destaques.length > 0 ? (
@@ -57,10 +61,21 @@ const Catalogo = () => {
           )}
         </div>
 
+        {/* Todos os produtos */}
         <h2>Todos os Produtos</h2>
+
+        {/* Agora a filtragem vem logo abaixo do título */}
+        <div className="linha-filtros">
+          <Filtros
+            produtos={todosProdutos}
+            onFiltroAtualizado={setProdutosFiltrados}
+            classeExtra="filtros-catalogo"
+          />
+        </div>
+
         <div className="produtos-grid">
-          {produtos.length > 0 ? (
-            produtos.map(renderCard)
+          {produtosFiltrados.length > 0 ? (
+            produtosFiltrados.map(renderCard)
           ) : (
             <p style={{ marginTop: "20px", color: "#666" }}>
               Nenhum produto encontrado.

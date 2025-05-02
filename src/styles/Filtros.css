@@ -1,3 +1,4 @@
+/* ====== Estilos padrão - Admin Dashboard ====== */
 .filtros-container {
     display: flex;
     align-items: center;
@@ -31,7 +32,7 @@
     box-shadow: 0 0 0 2px #9b6e3844;
   }
   
-  /* Botão de resetar filtros */
+  /* Botão resetar filtros */
   .btn-resetar-filtros {
     background-color: #1a162c;
     border: 1px solid #38334c;
@@ -55,12 +56,12 @@
     box-shadow: 0 2px 8px rgba(155, 110, 56, 0.2);
   }
   
-  /* Ícone de Refresh mais alinhado */
+  /* Ícone de Refresh */
   .btn-resetar-filtros svg {
     font-size: 18px;
   }
   
-  /* RESPONSIVO */
+  /* ====== Responsivo para Admin ====== */
   @media (max-width: 768px) {
     .filtros-container {
       flex-direction: column;
@@ -77,6 +78,72 @@
     .btn-resetar-filtros {
       width: 100%;
       min-height: 45px;
+    }
+  }
+  
+  /* ====== Estilos específicos para o Catálogo Público ====== */
+  
+  /* Caixa de filtro no catálogo */
+  .filtros-container.filtros-catalogo {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto 2rem; /* Centraliza e dá espaço embaixo */
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-sizing: border-box;
+  }
+  
+  /* Campos claros */
+  .filtros-container.filtros-catalogo .filtro-categoria,
+  .filtros-container.filtros-catalogo .filtro-nome {
+    background-color: #f8f8f8;
+    color: #333;
+    border: 1px solid #ccc;
+  }
+  
+  /* Foco claro */
+  .filtros-container.filtros-catalogo .filtro-categoria:focus,
+  .filtros-container.filtros-catalogo .filtro-nome:focus {
+    border-color: #9b6e38;
+    box-shadow: 0 0 0 2px #9b6e3844;
+  }
+  
+  /* Botão reset claro */
+  .filtros-container.filtros-catalogo .btn-resetar-filtros {
+    background-color: #f8f8f8;
+    color: #333;
+    border: 1px solid #ccc;
+  }
+  
+  .filtros-container.filtros-catalogo .btn-resetar-filtros:hover {
+    background-color: #eee;
+    border-color: #9b6e38;
+    color: #9b6e38;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(155, 110, 56, 0.2);
+  }
+  
+  /* Ícone no catálogo */
+  .filtros-container.filtros-catalogo .btn-resetar-filtros svg {
+    font-size: 18px;
+  }
+  
+  /* ====== Responsivo para Catálogo ====== */
+  @media (max-width: 768px) {
+    .filtros-container.filtros-catalogo {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+      padding: 1rem;
+    }
+  
+    .filtros-container.filtros-catalogo .filtro-categoria,
+    .filtros-container.filtros-catalogo .filtro-nome,
+    .filtros-container.filtros-catalogo .btn-resetar-filtros {
+      width: 100%;
     }
   }
   
