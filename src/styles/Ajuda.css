@@ -1,87 +1,215 @@
-/*
-  Paleta usada no projeto:
-  - Azul escuro: #27194e
-  - Bege claro: #ddd0c2
-  - Marrom: #9b6e38
-  - Roxo acinzentado: #787092
-  - Lilás acinzentado: #8981ac
-
-  Estilo completo da página de suporte e contato
-*/
-
 .ajuda-container {
-    max-width: 900px;
-    margin: 80px auto 0 auto; /* Adicionado espaçamento no topo */
+  max-width: 1100px;
+  margin: 100px auto 0;
+  padding: 60px 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: #ffffff;
+}
+
+.ajuda-titulo {
+  text-align: center;
+  color: #27194e;
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.ajuda-subtitulo {
+  text-align: center;
+  font-size: 20px;
+  color: #787092;
+  margin: 0 auto 60px;
+  max-width: 700px;
+  line-height: 1.5;
+}
+
+.faq-section {
+  margin-bottom: 100px;
+}
+
+.faq-section h2 {
+  color: #27194e;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.faq-item {
+  background-color: #f9f9f9;
+  border-left: 5px solid #9b6e38;
+  padding: 30px 25px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.faq-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.faq-pergunta {
+  margin: 0 0 12px;
+  color: #27194e;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.faq-resposta {
+  margin: 0;
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.contato-section {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.contato-section h2 {
+  font-size: 32px;
+  color: #27194e;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.contato-section h3 {
+  font-size: 20px;
+  color: #787092;
+  font-weight: normal;
+  margin-bottom: 50px;
+}
+
+.contato-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.contato-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd0c2;
+  border-radius: 12px;
+  padding: 35px 25px;
+  flex: 1 1 280px;
+  max-width: 340px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contato-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.contato-card .icon {
+  font-size: 40px;
+  color: #9b6e38;
+  margin-bottom: 15px;
+}
+
+.contato-card strong {
+  display: block;
+  font-size: 22px;
+  color: #27194e;
+  margin-bottom: 8px;
+}
+
+.contato-card p {
+  font-size: 17px;
+  color: #555;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.contato-card a {
+  display: inline-block;
+  font-size: 17px;
+  color: #27194e;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s, border-bottom 0.3s;
+}
+
+.contato-card a:hover {
+  color: #9b6e38;
+  border-bottom: 1px solid #9b6e38;
+}
+
+@media (max-width: 991px) {
+  .ajuda-container {
     padding: 40px 20px;
-    font-family: Arial, sans-serif;
+    margin-top: 80px;
   }
-  
+
   .ajuda-titulo {
-    text-align: center;
-    color: #27194e;
-    font-size: 32px;
-    margin-bottom: 10px;
+    font-size: 38px;
   }
-  
+
   .ajuda-subtitulo {
-    text-align: center;
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 40px;
+    font-size: 18px;
+    margin-bottom: 50px;
   }
-  
+
   .faq-section h2,
   .contato-section h2 {
-    color: #27194e;
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 28px;
   }
-  .contato-section h3 {
-    color: #27194e;
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .faq-item {
-    margin-bottom: 25px;
-    background-color: #f9f9f9;
-    border-left: 6px solid #9b6e38;
-    padding: 20px;
-    border-radius: 6px;
-  }
-  
+
   .faq-pergunta {
-    margin: 0 0 10px;
-    color: #787092;
-    font-size: 20px;
+    font-size: 22px;
   }
-  
+
   .faq-resposta {
-    margin: 0;
     font-size: 16px;
-    color: #333;
   }
-  
-  .contato-section ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .contato-section li {
-    margin-bottom: 15px;
-    font-size: 16px;
-    display: flex;
+}
+
+@media (max-width: 768px) {
+  .contato-cards {
+    flex-direction: column;
     align-items: center;
   }
-  
-  .contato-section .icon {
-    color: #9b6e38;
-    margin-right: 8px;
-    font-size: 18px;
+
+  .contato-card {
+    max-width: 100%;
+    width: 100%;
   }
-  
-  .contato-section a {
-    color: #27194e;
-    text-decoration: underline;
+
+  .faq-item {
+    padding: 25px 20px;
   }
-  
+}
+
+@media (max-width: 480px) {
+  .ajuda-titulo {
+    font-size: 32px;
+  }
+
+  .ajuda-subtitulo {
+    font-size: 16px;
+  }
+
+  .faq-section h2,
+  .contato-section h2 {
+    font-size: 24px;
+  }
+
+  .contato-card .icon {
+    font-size: 36px;
+  }
+
+  .contato-card strong {
+    font-size: 20px;
+  }
+
+  .contato-card p,
+  .contato-card a {
+    font-size: 16px;
+  }
+}

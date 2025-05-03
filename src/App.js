@@ -6,10 +6,12 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import Ajuda from "./pages/Ajuda"; 
 import Catalogo from "./pages/Catalogo";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   return (
     <Router>
+      <ScrollToTop /> 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sobre-nos" element={<SobreNos />} />

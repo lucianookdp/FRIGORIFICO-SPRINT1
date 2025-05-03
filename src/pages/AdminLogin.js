@@ -20,7 +20,6 @@ const AdminLogin = () => {
     }
 
     const result = await loginAdmin(email, senha);
-    console.log("Resposta do back-end:", result); // 👈 debug no console
 
     if (result.success) {
       localStorage.setItem("token", result.token);
@@ -50,7 +49,7 @@ const AdminLogin = () => {
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
-              setErro(""); // limpa erro ao digitar
+              setErro(""); // Limpa mensagem de erro ao digitar
             }}
           />
 
@@ -63,7 +62,7 @@ const AdminLogin = () => {
               value={senha}
               onChange={(e) => {
                 setSenha(e.target.value);
-                setErro(""); // limpa erro ao digitar
+                setErro(""); // Limpa mensagem de erro ao digitar
               }}
             />
             <span

@@ -2,78 +2,75 @@
 .footer {
   background-color: #27194e;
   color: white;
-  padding: 50px 20px;
+  padding: 40px 20px;
   border-top: 4px solid #9b6e38;
   text-align: center;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
-/* Container flexível interno que alinha conteúdo do footer */
+/* Container interno flexível */
 .footer-container {
   max-width: 1300px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 40px;
+  gap: 30px;
   flex-wrap: wrap;
 }
 
-/* Seção com informações da empresa à esquerda */
+/* Informações da empresa */
 .footer-info {
   flex: 1;
-  min-width: 280px;
+  min-width: 260px;
   text-align: left;
 }
 
 .footer-info h3 {
-  font-size: 26px;
+  font-size: 24px;
   color: #ddd0c2;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .footer-info p {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 18px;
-  margin: 8px 0;
+  gap: 8px;
+  font-size: 16px;
+  margin: 6px 0;
 }
 
-/* Ícones das informações com destaque */
 .footer-info .icon {
   color: #9b6e38;
 }
 
-/* Botões circulares para redes sociais */
+/* Botões sociais */
 .footer-social-buttons {
-  margin-top: 25px;
+  margin-top: 20px;
   display: flex;
-  gap: 16px;
+  gap: 14px;
   align-items: center;
 }
 
 .social-button {
-  width: 50px;
-  height: 50px;
+  width: 44px;
+  height: 44px;
   background-color: #ddd0c2;
   color: #27194e;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 22px;
+  font-size: 20px;
   transition: all 0.3s ease;
   text-decoration: none;
 }
 
-/* Efeito hover geral dos botões sociais */
 .social-button:hover {
   transform: scale(1.1);
   color: white;
 }
 
-/* Cores específicas no hover para cada rede social */
 .social-button.facebook:hover {
   background-color: #1877f2;
 }
@@ -86,47 +83,74 @@
   background-color: #25d366;
 }
 
-/* Estilização do iframe do Google Maps à direita */
+/* Mapa */
 .footer-map {
   flex: 1;
-  min-width: 280px;
-  max-width: 500px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  min-width: 260px;
+  max-width: 480px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   overflow: hidden;
 }
 
-/* Ajustes responsivos para dispositivos móveis abaixo de 768px */
-@media (max-width: 768px) {
-  .footer-container {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-  }
-
-  .footer-info {
-      text-align: center;
-  }
-
-  .footer-social-buttons {
-      justify-content: center;
-      margin-top: 20px;
-      flex-wrap: wrap;
-      gap: 20px;
-  }
-
-  .footer-map {
-      width: 100%;
-      margin-top: 30px;
-  }
-}
-
-/* Área inferior com direitos reservados */
+/* Área de direitos */
 .footer-bottom {
-  margin-top: 30px;
-  font-size: 15px;
+  margin-top: 24px;
+  font-size: 14px;
   color: #ddd0c2;
   text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 20px;
+  padding-top: 16px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-info {
+    text-align: center;
+  }
+
+  .footer-social-buttons {
+    justify-content: center;
+    margin-top: 18px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-map {
+    width: 100%;
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 15px;
+  }
+
+  .footer-info h3 {
+    font-size: 22px;
+  }
+
+  .footer-info p {
+    font-size: 15px;
+  }
+
+  .social-button {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .footer-bottom {
+    font-size: 13px;
+    margin-top: 20px;
+    padding-top: 14px;
+  }
 }

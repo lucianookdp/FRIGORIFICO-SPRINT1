@@ -1,117 +1,160 @@
 .admin-login-container {
-    min-height: 100vh;
-    background: linear-gradient(145deg, #1b1238, #27194e);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #27194e, #1b1238);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.admin-login-box {
+  background-color: #ffffff;
+  padding: 3rem 2.5rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  animation: moveUp 0.8s ease forwards;
+}
+
+.admin-login-box h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #27194e;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.admin-login-box form {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-login-box label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.admin-login-box input {
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
+}
+
+.admin-login-box input:focus {
+  border-color: #9b6e38;
+  box-shadow: 0 0 0 3px rgba(155, 110, 56, 0.2);
+  outline: none;
+}
+
+.senha-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.senha-wrapper input {
+  flex: 1;
+  padding-right: 2.5rem;
+  margin-bottom: 0; /* Corrige o alinhamento */
+}
+
+.icone-olho {
+  position: absolute;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 2px); /* Ajuste fino para alinhar exatamente */
+  font-size: 1.25rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.icone-olho:hover {
+  color: #27194e;
+}
+
+.admin-login-box button {
+  padding: 0.9rem;
+  background-color: #27194e;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.admin-login-box button:hover {
+  background-color: #3b2a67;
+  box-shadow: 0 6px 20px rgba(39, 25, 78, 0.4);
+  transform: translateY(-2px);
+}
+
+.erro {
+  color: #d93025;
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
   .admin-login-box {
-    background-color: #ffffff;
-    padding: 3rem 2rem;
-    border-radius: 16px;
-    width: 100%;
-    max-width: 400px;
-    min-width: 320px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
-    font-family: "Segoe UI", sans-serif;
+    padding: 2.5rem 2rem;
+    max-width: 90%;
   }
-  
+
   .admin-login-box h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #27194e;
     font-size: 1.8rem;
-    font-weight: 700;
   }
-  
-  .admin-login-box form {
-    display: flex;
-    flex-direction: column;
+}
+
+@media (max-width: 480px) {
+  .admin-login-box {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
   }
-  
-  .admin-login-box label {
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: #333;
-    font-size: 0.95rem;
+
+  .admin-login-box h2 {
+    font-size: 1.6rem;
   }
-  
-  .admin-login-box input {
-    padding: 0.75rem 0.9rem;
-    margin-bottom: 1.2rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    width: 100%;
-    transition: border 0.3s ease;
-    box-sizing: border-box;
-  }
-  
-  .admin-login-box input:focus {
-    border-color: #27194e;
-    outline: none;
-  }
-  
-  .senha-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  
-  .senha-wrapper input {
-    padding-right: 42px;
-  }
-  
-  .icone-olho {
-    position: absolute;
-    right: 12px;
-    font-size: 1rem;
-    color: #777;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .icone-olho:hover {
-    color: #27194e;
-  }
-  
+
+  .admin-login-box input,
   .admin-login-box button {
-    padding: 0.85rem;
-    background-color: #27194e;
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 0.95rem;
   }
-  
-  .admin-login-box button:hover {
-    background-color: #3b2a67;
-    box-shadow: 0 4px 14px rgba(39, 25, 78, 0.4);
-  }
-  
-  .erro {
-    color: red;
-    font-size: 0.85rem;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
-  /* Responsivo */
-  @media (max-width: 480px) {
-    .admin-login-box {
-      padding: 2rem 1.5rem;
-      border-radius: 12px;
-      min-width: 100%;
-      max-width: 100%;
-    }
-  
-    .admin-login-box h2 {
-      font-size: 1.5rem;
-    }
-  }
-  
+}

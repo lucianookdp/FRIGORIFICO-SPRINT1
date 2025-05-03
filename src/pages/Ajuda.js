@@ -2,8 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styles/Ajuda.css";
-
-import { FiPhone, FiMail, FiMessageCircle } from "react-icons/fi"; // Ícones modernos
+import { FiPhone, FiMessageCircle } from "react-icons/fi"; // Retirei o FiMail
 
 function Ajuda() {
   return (
@@ -11,55 +10,94 @@ function Ajuda() {
       <Header />
 
       <main className="ajuda-container">
-        <h1 className="ajuda-titulo">Central de Suporte e Contato</h1>
+        <h1 className="ajuda-titulo">Central de Atendimento</h1>
         <p className="ajuda-subtitulo">
-          Estamos aqui para te ajudar. Confira abaixo as dúvidas frequentes ou entre em contato com nossa equipe.
+          Tire suas dúvidas ou entre em contato direto com nossa equipe especializada.
         </p>
 
-        {/* FAQ */}
+        {/* Perguntas Frequentes */}
         <section className="faq-section">
           <h2>Perguntas Frequentes</h2>
 
           <div className="faq-item">
-            <h3 className="faq-pergunta">Como faço para solicitar um orçamento?</h3>
+            <h3 className="faq-pergunta">Como solicitar um orçamento de carnes específicas?</h3>
             <p className="faq-resposta">
-              Acesse a página de catálogo, selecione os cortes desejados e clique em "Solicitar Orçamento". Você pode enviar pelo WhatsApp.
+              Acesse o nosso catálogo de produtos, selecione os cortes desejados e clique em "Solicitar Orçamento". Você será direcionado para envio pelo WhatsApp.
             </p>
           </div>
 
           <div className="faq-item">
-            <h3 className="faq-pergunta">O site mostra preços atualizados?</h3>
+            <h3 className="faq-pergunta">Os preços exibidos são fixos?</h3>
             <p className="faq-resposta">
-              Os valores exibidos são aproximados. Para valores corretos, entre em contato conosco.
+              Não. Os preços são aproximados e podem variar conforme o mercado. Para valores atualizados, solicite um orçamento diretamente com nossa equipe.
             </p>
           </div>
 
           <div className="faq-item">
-            <h3 className="faq-pergunta">Quais são as formas de contato?</h3>
+            <h3 className="faq-pergunta">Quais cortes de carne estão disponíveis?</h3>
             <p className="faq-resposta">
-              Você pode falar com a gente pelo WhatsApp, telefone fixo, e-mail ou formulário de contato.
+              Trabalhamos com uma variedade de cortes bovinos, suínos e especiais. No catálogo, você encontra fotos, descrições e informações de cada produto.
+            </p>
+          </div>
+
+          <div className="faq-item">
+            <h3 className="faq-pergunta">Vocês vendem para pessoa física ou apenas para empresas?</h3>
+            <p className="faq-resposta">
+              Atendemos tanto pessoa física quanto empresas, restaurantes, mercados e açougues. Consulte condições especiais para compras em maior volume.
+            </p>
+          </div>
+
+          <div className="faq-item">
+            <h3 className="faq-pergunta">Posso retirar minha compra diretamente no frigorífico?</h3>
+            <p className="faq-resposta">
+              Sim. Após confirmação do pedido, disponibilizamos retirada diretamente no nosso endereço ou envio conforme combinado.
+            </p>
+          </div>
+
+          <div className="faq-item">
+            <h3 className="faq-pergunta">Como funciona a validade e o armazenamento das carnes?</h3>
+            <p className="faq-resposta">
+              Nossas carnes seguem rigorosos padrões de qualidade e armazenamento. As informações sobre validade e conservação acompanham o pedido.
+            </p>
+          </div>
+
+          <div className="faq-item">
+            <h3 className="faq-pergunta">Quais são as formas de pagamento aceitas?</h3>
+            <p className="faq-resposta">
+              Aceitamos pagamento via transferência bancária, PIX e outras modalidades. Consulte nossa equipe para confirmar as opções disponíveis.
+            </p>
+          </div>
+
+          <div className="faq-item">
+            <h3 className="faq-pergunta">Vocês fazem entrega para outras cidades?</h3>
+            <p className="faq-resposta">
+              Entregamos em Guarapuava e região. Para outras localidades, consulte disponibilidade e valores adicionais.
             </p>
           </div>
         </section>
 
-        {/* Contato */}
+        {/* Contato Direto */}
         <section className="contato-section">
-          <h2>Fale com a gente</h2>
-          <h3>Se sua dúvida não foi resolvida, entre em contato conosco diretamente:</h3>
-          <ul>
-            <li>
-              <FiPhone className="icon" /> <strong>Telefone:</strong>&nbsp; (42) 3623-6627
-            </li>
-            <li>
-              <FiMessageCircle className="icon" /> <strong>WhatsApp:</strong>{" "}
-              <a href="https://wa.me/554212345678" target="_blank" rel="noopener noreferrer">
-              &nbsp;Clique aqui para nos chamar
+          <h2>Fale Conosco</h2>
+          <h3>Entre em contato da forma que preferir:</h3>
+
+          <div className="contato-cards">
+            <div className="contato-card">
+              <FiPhone className="icon" />
+              <strong>Telefone</strong>
+              <p>Atendimento de segunda a sábado, em horário comercial.</p>
+              <a href="tel:+554236236627">(42) 3623-6627</a>
+            </div>
+
+            <div className="contato-card">
+              <FiMessageCircle className="icon" />
+              <strong>WhatsApp</strong>
+              <p>Envie sua dúvida ou orçamento rapidamente pelo nosso WhatsApp.</p>
+              <a href="https://wa.me/554236236627" target="_blank" rel="noopener noreferrer">
+                Conversar Agora
               </a>
-            </li>
-            <li>
-              <FiMail className="icon" /><strong>E-mail:</strong>&nbsp;padilha.dudafrigorificoltda@hotmail.com
-            </li>
-          </ul>
+            </div>
+          </div>
         </section>
       </main>
 
