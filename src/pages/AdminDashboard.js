@@ -174,10 +174,10 @@ const AdminDashboard = () => {
                 <td className="coluna-acoes">
                   <div className="botoes-wrapper">
                     <button className="btn-editar" onClick={() => editarProduto(p)}>
-                      <FaEdit /> Editar
+                      <FaEdit /> 
                     </button>
                     <button className="btn-remover" onClick={() => removerProduto(p.id)}>
-                      <FaTrash /> Remover
+                      <FaTrash /> 
                     </button>
                     <button
                       className={`btn-destaque ${p.destaque ? "ativo" : ""}`}
