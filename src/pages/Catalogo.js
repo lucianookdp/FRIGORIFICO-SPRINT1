@@ -1,30 +1,60 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Filtros from "../components/Filtros"; // Importando o componente de filtros
+import Filtros from "../components/Filtros";
 import api, { API_BASE } from "../api/api";
 import "../styles/Catalogo.css";
 
 const Catalogo = () => {
   const [destaques, setDestaques] = useState([]);
-  const [todosProdutos, setTodosProdutos] = useState([]);
-  const [produtosFiltrados, setProdutosFiltrados] = useState([]);
+  const [produtos, setProdutos] = useState([]);
+  const [baseFrigorifico, setBaseFrigorifico] = useState([]);
+  const [baseAcougue, setBaseAcougue] = useState([]);
+  const [frigorificoFiltrados, setFrigorificoFiltrados] = useState([]);
+  const [acougueFiltrados, setAcougueFiltrados] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const carregarDados = async () => {
-      try {
-        const resDestaques = await api.get("/produtos/destaques");
-        const resTodos = await api.get("/produtos");
+    let cancelado = false;
 
+    const carregarDados = async () => {
+      setLoading(true);
+
+      try {
+        const [resDestaques, resTodos] = await Promise.all([
+          api.get("/produtos/destaques"),
+          api.get("/produtos"),
+        ]);
+
+        if (cancelado) return;
+
+        const todos = resTodos.data;
+        const frigorifico = todos.filter((p) => p.local === "Frigorifico");
+        const acougue = todos.filter((p) => p.local === "Acougue");
+
+        setProdutos(todos);
         setDestaques(resDestaques.data);
-        setTodosProdutos(resTodos.data);
-        setProdutosFiltrados(resTodos.data); // Inicializa filtrados também
+        setBaseFrigorifico(frigorifico);
+        setFrigorificoFiltrados(frigorifico);
+        setBaseAcougue(acougue);
+        setAcougueFiltrados(acougue);
+
+        setTimeout(() => {
+          if (!cancelado) setLoading(false);
+        }, 400);
       } catch (error) {
-        console.error("Erro ao carregar catálogo:", error);
+        if (!cancelado) {
+          console.error("Erro ao carregar catálogo:", error);
+          setLoading(false);
+        }
       }
     };
 
     carregarDados();
+
+    return () => {
+      cancelado = true;
+    };
   }, []);
 
   const renderCard = (produto) => (
@@ -37,9 +67,7 @@ const Catalogo = () => {
       <div className="info-produto">
         <h3>{produto.titulo}</h3>
         <p className="descricao">{produto.descricao}</p>
-        <span className="preco">
-          {Number(produto.valorKg).toFixed(2)} R$/kg
-        </span>
+        <span className="preco">{Number(produto.valorKg).toFixed(2)} R$/kg</span>
       </div>
     </div>
   );
@@ -49,39 +77,65 @@ const Catalogo = () => {
       <Header />
 
       <section className="catalogo">
-        {/* Destaques */}
-        <h1>Produtos em Destaque</h1>
-        <div className="produtos-grid">
-          {destaques.length > 0 ? (
-            destaques.map(renderCard)
-          ) : (
-            <p style={{ marginTop: "20px", color: "#666" }}>
-              Nenhum produto em destaque no momento.
-            </p>
-          )}
-        </div>
+        {loading ? (
+          <div className="carregando">
+            <p>Carregando catálogo...</p>
+          </div>
+        ) : (
+          <>
+            {/* Destaques */}
+            <h1>Produtos em Destaque</h1>
+            <div className="produtos-grid">
+              {destaques.length > 0 ? (
+                destaques.map(renderCard)
+              ) : (
+                <p style={{ marginTop: "20px", color: "#666" }}>
+                  Nenhum produto em destaque no momento.
+                </p>
+              )}
+            </div>
 
-        {/* Todos os produtos */}
-        <h2>Todos os Produtos</h2>
+            {/* Produtos Frigorifico */}
+            <h2>Frigorífico</h2>
+            <div className="linha-filtros">
+              <Filtros
+                key="filtro-frigorifico"
+                produtos={baseFrigorifico}
+                onFiltroAtualizado={setFrigorificoFiltrados}
+                classeExtra="filtros-catalogo"
+              />
+            </div>
+            <div className="produtos-grid">
+              {frigorificoFiltrados.length > 0 ? (
+                frigorificoFiltrados.map(renderCard)
+              ) : (
+                <p style={{ marginTop: "20px", color: "#666" }}>
+                  Nenhum produto do frigorífico encontrado.
+                </p>
+              )}
+            </div>
 
-        {/* Agora a filtragem vem logo abaixo do título */}
-        <div className="linha-filtros">
-          <Filtros
-            produtos={todosProdutos}
-            onFiltroAtualizado={setProdutosFiltrados}
-            classeExtra="filtros-catalogo"
-          />
-        </div>
-
-        <div className="produtos-grid">
-          {produtosFiltrados.length > 0 ? (
-            produtosFiltrados.map(renderCard)
-          ) : (
-            <p style={{ marginTop: "20px", color: "#666" }}>
-              Nenhum produto encontrado.
-            </p>
-          )}
-        </div>
+            {/* Produtos Açougue */}
+            <h2>Açougue</h2>
+            <div className="linha-filtros">
+              <Filtros
+                key="filtro-acougue"
+                produtos={baseAcougue}
+                onFiltroAtualizado={setAcougueFiltrados}
+                classeExtra="filtros-catalogo"
+              />
+            </div>
+            <div className="produtos-grid">
+              {acougueFiltrados.length > 0 ? (
+                acougueFiltrados.map(renderCard)
+              ) : (
+                <p style={{ marginTop: "20px", color: "#666" }}>
+                  Nenhum produto do açougue encontrado.
+                </p>
+              )}
+            </div>
+          </>
+        )}
       </section>
 
       <Footer />

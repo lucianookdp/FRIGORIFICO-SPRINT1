@@ -131,6 +131,13 @@
   margin-top: auto;
 }
 
+.carregando {
+  text-align: center;
+  padding: 100px 20px;
+  font-size: 18px;
+  color: #444;
+}
+
 /* Responsivo */
 @media (max-width: 768px) {
   .produtos-grid {

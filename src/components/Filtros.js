@@ -14,19 +14,31 @@ const Filtros = ({ produtos, onFiltroAtualizado, classeExtra = "" }) => {
   };
 
   useEffect(() => {
-    const produtosFiltrados = produtos.filter((produto) => {
-      const correspondeCategoria =
-        categoriaAtual === "Todas" || produto.categoria === categoriaAtual;
+    let ativo = true;
 
-      const tituloNormalizado = normalizeTexto(produto.titulo);
-      const textoNormalizado = normalizeTexto(textoAtual);
+    const aplicarFiltro = () => {
+      const produtosFiltrados = produtos.filter((produto) => {
+        const correspondeCategoria =
+          categoriaAtual === "Todas" || produto.categoria === categoriaAtual;
 
-      const correspondeNome = tituloNormalizado.includes(textoNormalizado);
+        const tituloNormalizado = normalizeTexto(produto.titulo);
+        const textoNormalizado = normalizeTexto(textoAtual);
 
-      return correspondeCategoria && correspondeNome;
-    });
+        const correspondeNome = tituloNormalizado.includes(textoNormalizado);
 
-    onFiltroAtualizado(produtosFiltrados);
+        return correspondeCategoria && correspondeNome;
+      });
+
+      if (ativo) {
+        onFiltroAtualizado(produtosFiltrados);
+      }
+    };
+
+    aplicarFiltro();
+
+    return () => {
+      ativo = false;
+    };
   }, [produtos, categoriaAtual, textoAtual, onFiltroAtualizado]);
 
   const resetarFiltros = () => {
@@ -55,7 +67,11 @@ const Filtros = ({ produtos, onFiltroAtualizado, classeExtra = "" }) => {
         className="filtro-nome"
       />
 
-      <button className="btn-resetar-filtros" onClick={resetarFiltros} title="Limpar Filtros">
+      <button
+        className="btn-resetar-filtros"
+        onClick={resetarFiltros}
+        title="Limpar Filtros"
+      >
         <FiRefreshCcw size={18} />
       </button>
     </div>

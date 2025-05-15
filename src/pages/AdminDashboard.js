@@ -18,6 +18,7 @@ const AdminDashboard = () => {
   const [valorKg, setValorKg] = useState("");
   const [foto, setFoto] = useState(null);
   const [categoria, setCategoria] = useState("Carne Bovina");
+  const [local, setLocal] = useState("Frigorifico");
 
   useEffect(() => {
     buscarProdutos();
@@ -45,6 +46,8 @@ const AdminDashboard = () => {
     formData.append("descricao", descricao);
     formData.append("valorKg", valorKg);
     formData.append("categoria", categoria);
+    formData.append("local", local);
+
 
     if (foto) {
       formData.append("foto", foto);
@@ -87,6 +90,7 @@ const AdminDashboard = () => {
     setDescricao(produto.descricao);
     setValorKg(produto.valorKg);
     setCategoria(produto.categoria || "Carne Bovina");
+    setLocal(produto.local || "Frigorifico");
     setFoto(null);
     setEditandoId(produto.id);
     setMostrarFormulario(true);
@@ -97,6 +101,7 @@ const AdminDashboard = () => {
     setDescricao("");
     setValorKg("");
     setCategoria("Carne Bovina");
+    setLocal("Frigorifico");
     setFoto(null);
     setEditandoId(null);
     setMostrarFormulario(false);
@@ -154,6 +159,7 @@ const AdminDashboard = () => {
               <th>DESCRIÇÃO</th>
               <th>VALOR (KG)</th>
               <th>CATEGORIA</th>
+              <th>LOCAL</th>
               <th>AÇÃO</th>
             </tr>
           </thead>
@@ -171,6 +177,7 @@ const AdminDashboard = () => {
                 <td className="coluna-descricao">{p.descricao}</td>
                 <td className="coluna-valor">{Number(p.valorKg).toFixed(2)} R$</td>
                 <td className="coluna-categoria">{p.categoria}</td>
+                <td className="coluna-local">{p.local}</td>
                 <td className="coluna-acoes">
                   <div className="botoes-wrapper">
                     <button className="btn-editar" onClick={() => editarProduto(p)}>
@@ -204,6 +211,8 @@ const AdminDashboard = () => {
           setDescricao={setDescricao}
           setValorKg={setValorKg}
           setCategoria={setCategoria}
+          local={local}
+          setLocal={setLocal}
           setFoto={setFoto}
           onSalvar={salvarProduto}
           onCancelar={limparFormulario}

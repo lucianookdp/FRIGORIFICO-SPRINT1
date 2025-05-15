@@ -8,10 +8,12 @@ const ProdutoModal = ({
   descricao,
   valorKg,
   categoria,
+  local,
   setTitulo,
   setDescricao,
   setValorKg,
   setCategoria,
+  setLocal,
   setFoto,
   onSalvar,
   onCancelar
@@ -52,6 +54,16 @@ const ProdutoModal = ({
           <option value="Carne Bovina">Carne Bovina</option>
           <option value="Carne Suína">Carne Suína</option>
           <option value="Aves">Aves</option>
+        </select>
+
+        {/* CAMPO DE LOCAL */}
+        <select
+          value={local}
+          onChange={(e) => setLocal(e.target.value)}
+          className="select-local"
+        >
+          <option value="Frigorifico">Frigorífico</option>
+          <option value="Acougue">Açougue</option>
         </select>
 
         <input
