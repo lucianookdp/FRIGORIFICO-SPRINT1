@@ -1,0 +1,198 @@
+:root {
+  --roxo-escuro: #27194e;
+  --roxo-claro: #8981ac;
+  --marrom: #9b6e38;
+  --cinza-escuro: #1a162c;
+  --cinza-hover: #201b34;
+  --vermelho: #e84158;
+  --vermelho-hover: #c73447;
+  --texto-claro: #f8f8f8;
+}
+
+
+/* Garantir fundo total escuro e estrutura para o layout flexível */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", sans-serif;
+  color: var(--texto-claro);
+  background-color: transparent; /* fundo controlado por cada página */
+}
+
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container principal da página */
+.verlogs-container {
+  display: flex;
+  flex-direction: column;
+  padding: 120px 20px 40px;
+  background-color: #0e0b1b;
+  margin: 0 auto;
+  box-sizing: border-box;
+  min-height: 100vh; /* Agora cobre toda a tela */
+}
+
+
+.verlogs-container h1 {
+  font-size: 28px;
+  color: white;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+/* Tabela escura estilo dashboard */
+.tabela-logs table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--cinza-escuro);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.tabela-logs th,
+.tabela-logs td {
+  padding: 14px;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.tabela-logs th {
+  background-color: var(--roxo-escuro);
+  color: white;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.tabela-logs tbody tr {
+  border-bottom: 1px solid #2b2542;
+  transition: background-color 0.2s;
+}
+
+.tabela-logs tbody tr:hover {
+  background-color: var(--cinza-hover);
+}
+
+.tabela-logs td {
+  color: #e0e0e0;
+}
+
+/* Botões de ação */
+.tabela-logs button {
+  background-color: var(--vermelho);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0 4px;
+}
+
+.tabela-logs button:hover {
+  background-color: var(--vermelho-hover);
+}
+
+/* Modal de detalhes */
+.modal-detalhes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-conteudo {
+  background-color: #1a162c;
+  color: white;
+  padding: 24px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.modal-conteudo h2 {
+  margin-bottom: 16px;
+  color: white;
+  text-align: center;
+}
+
+.produto-detalhado {
+  margin-bottom: 12px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 8px;
+  font-size: 14px;
+}
+
+.modal-conteudo button {
+  margin-top: 16px;
+  padding: 10px 16px;
+  background-color: var(--marrom);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-conteudo button:hover {
+  background-color: #7c532d;
+}
+
+/* Responsivo básico */
+@media (max-width: 768px) {
+  .tabela-logs table,
+  .tabela-logs thead,
+  .tabela-logs tbody,
+  .tabela-logs th,
+  .tabela-logs td,
+  .tabela-logs tr {
+    display: block;
+  }
+
+  .tabela-logs thead {
+    display: none;
+  }
+
+  .tabela-logs tr {
+    margin-bottom: 20px;
+    background-color: var(--cinza-escuro);
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .tabela-logs td {
+    padding: 10px 0;
+    text-align: left;
+    font-size: 13px;
+  }
+
+  .tabela-logs td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 4px;
+    color: #bbb;
+  }
+}

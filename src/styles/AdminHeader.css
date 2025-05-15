@@ -42,7 +42,8 @@
   gap: 16px;
 }
 
-/* BOTÕES */
+/* BOTÕES (Home, Logs, Sair) */
+.admin-btn-home,
 .admin-btn-logs,
 .admin-btn-sair {
   display: inline-flex;
@@ -62,12 +63,14 @@
   transition: all 0.3s ease;
 }
 
+.admin-btn-home svg,
 .admin-btn-logs svg,
 .admin-btn-sair svg {
   vertical-align: middle;
   font-size: 19px;
 }
 
+.admin-btn-home::after,
 .admin-btn-logs::after,
 .admin-btn-sair::after {
   content: "";
@@ -80,11 +83,13 @@
   transition: width 0.3s ease-in-out;
 }
 
+.admin-btn-home:hover::after,
 .admin-btn-logs:hover::after,
 .admin-btn-sair:hover::after {
   width: 100%;
 }
 
+.admin-btn-home:hover,
 .admin-btn-logs:hover,
 .admin-btn-sair:hover {
   color: #ddd0c2;
@@ -105,12 +110,14 @@
     gap: 12px;
   }
 
+  .admin-btn-home,
   .admin-btn-logs,
   .admin-btn-sair {
     font-size: 16px;
     padding: 8px 14px;
   }
 
+  .admin-btn-home svg,
   .admin-btn-logs svg,
   .admin-btn-sair svg {
     font-size: 18px;
