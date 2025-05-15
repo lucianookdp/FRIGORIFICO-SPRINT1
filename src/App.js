@@ -6,6 +6,7 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import Ajuda from "./pages/Ajuda"; 
 import Catalogo from "./pages/Catalogo";
+import Orcamento from "./pages/Orcamento"; // <-- IMPORTADO AQUI
 import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/ajuda" element={<Ajuda />} /> 
         <Route path="/catalogo" element={<Catalogo />} />
+        <Route path="/orcamento" element={<Orcamento />} /> {/* NOVA ROTA */}
       </Routes>
     </Router>
   );

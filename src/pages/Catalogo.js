@@ -97,6 +97,10 @@ const Catalogo = () => {
 
             {/* Produtos Frigorifico */}
             <h2>Frigorífico</h2>
+            <p className="descricao-local">
+              Produtos em maiores quantidades, ideais para reposição e distribuição geral.
+            </p>
+
             <div className="linha-filtros">
               <Filtros
                 key="filtro-frigorifico"
@@ -117,6 +121,10 @@ const Catalogo = () => {
 
             {/* Produtos Açougue */}
             <h2>Açougue</h2>
+            <p className="descricao-local">
+              Cortes selecionados e porções específicas, voltados ao atendimento direto ao consumidor.
+            </p>
+
             <div className="linha-filtros">
               <Filtros
                 key="filtro-acougue"

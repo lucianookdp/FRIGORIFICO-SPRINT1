@@ -138,6 +138,17 @@
   color: #444;
 }
 
+.descricao-local {
+  font-size: 14px;
+  color: #555;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Responsivo */
 @media (max-width: 768px) {
   .produtos-grid {
