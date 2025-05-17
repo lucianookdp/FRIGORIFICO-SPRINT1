@@ -1,6 +1,6 @@
 /* ===== Container Principal ===== */
 .sobre-nos-container {
-  background: linear-gradient(to bottom, #faf7f2, #f4eee7);
+  background: linear-gradient(to bottom, #f4f4f9, #eae9f2);
   padding: 40px 30px 100px;
   margin: 180px auto 100px;
   border-radius: 18px;
@@ -31,7 +31,7 @@
 .divider {
   width: 70px;
   height: 4px;
-  background-color: #9b6e38;
+  background-color: #4363ad;
   margin: 16px auto 60px;
   border-radius: 2px;
 }
@@ -39,7 +39,7 @@
 /* ===== Introdução ===== */
 .sobre-introducao {
   font-size: 20px;
-  color: #5c5671;
+  color: #5a5378;
   line-height: 1.8;
   margin: 0 auto 70px;
   max-width: 900px;
@@ -57,7 +57,7 @@
 /* ===== Bloco Individual ===== */
 .sobre-bloco {
   background: #ffffff;
-  border: 1px solid #ddd0c2;
+  border: 1px solid #dcdce6;
   border-radius: 16px;
   padding: 30px 24px;
   box-shadow: 0px 8px 18px rgba(39, 25, 78, 0.15);
@@ -89,7 +89,7 @@
 /* Ícone do bloco */
 .bloco-icon {
   font-size: 30px;
-  color: #9b6e38;
+  color: #4363ad;
   flex-shrink: 0;
 }
 
@@ -103,7 +103,7 @@
 /* Texto do Bloco */
 .sobre-bloco p {
   font-size: 18px;
-  color: #5c5671;
+  color: #5a5378;
   line-height: 1.8;
 }
 
