@@ -8,7 +8,6 @@ import {
   LuX,
 } from "react-icons/lu";
 import { MdHome } from "react-icons/md";
-import { FaClipboardList } from "react-icons/fa";
 import "../styles/Header.css";
 import logo from "../assets/images/logo.png";
 
@@ -42,13 +41,8 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/catalogo">
-                <LuBookOpenText className="icon" /> <span>Catálogo</span>
-              </Link>
-            </li>
-            <li>
               <Link to="/orcamento">
-                <FaClipboardList className="icon" /> <span>Orçamento</span>
+                <LuBookOpenText className="icon" /> <span>Catálogo</span>
               </Link>
             </li>
             <li>

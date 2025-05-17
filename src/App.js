@@ -6,7 +6,6 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import VerLogs from "./pages/VerLogs"; 
 import Ajuda from "./pages/Ajuda";
-import Catalogo from "./pages/Catalogo";
 import Orcamento from "./pages/Orcamento";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -21,7 +20,6 @@ const App = () => {
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/orcamentos" element={<VerLogs />} /> 
         <Route path="/ajuda" element={<Ajuda />} />
-        <Route path="/catalogo" element={<Catalogo />} />
         <Route path="/orcamento" element={<Orcamento />} />
       </Routes>
     </Router>

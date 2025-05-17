@@ -127,7 +127,7 @@ const Orcamento = () => {
         0
     ).toFixed(2);
 
-    const enviarOrcamento = () => {
+    const enviarOrcamento = async () => {
         if (!formulario.nome || !formulario.uf || !formulario.cidade || !formulario.email) {
             alert("Preencha todos os campos do formulário.");
             return;
@@ -139,10 +139,6 @@ const Orcamento = () => {
             return;
         }
 
-        setFormularioEnviado(true);
-    };
-
-    const finalizarOrcamento = async () => {
         const payload = {
             nome: formulario.nome,
             local: `${formulario.cidade} - ${formulario.uf}`,
@@ -155,22 +151,30 @@ const Orcamento = () => {
                 local: p.local,
             })),
         };
+
         try {
             await api.post("/orcamentos", payload);
+            setFormularioEnviado(true);
+        } catch (error) {
+            console.error("Erro ao salvar orçamento:", error);
+            alert("Erro ao salvar o orçamento.");
+        }
+    };
 
-            const telefone =
-                empresaSelecionada === "Frigorifico"
-                    ? "554299388528"
-                    : "554299061788";
 
-            const produtosTexto = carrinho
-                .map(
-                    (p) =>
-                        `• ${p.titulo}\n   Quantidade: ${p.quantidade}kg\n   Valor unitário: R$ ${Number(p.valorKg).toFixed(2)}`
-                )
-                .join("\n\n");
+    const finalizarOrcamento = () => {
+        const telefone =
+            empresaSelecionada === "Frigorifico"
+                ? "554299388528"
+                : "554299061788";
 
-            const textoClaro = `Olá! Vim pelo site e desejo solicitar um orçamento.\n
+        const produtosTexto = carrinho
+            .map((p) =>
+                `• ${p.titulo}\n   Quantidade: ${p.quantidade}kg\n   Valor unitário: R$ ${Number(p.valorKg).toFixed(2)}`
+            )
+            .join("\n\n");
+
+        const textoClaro = `Olá! Vim pelo site e desejo solicitar um orçamento.\n
 📍 *Dados do Cliente*
 Nome: ${formulario.nome}
 Cidade: ${formulario.cidade} - ${formulario.uf}
@@ -180,18 +184,15 @@ ${produtosTexto}
 
 💰 *Total Geral*: R$ ${valorTotal}`;
 
-            const texto = encodeURIComponent(textoClaro);
+        const texto = encodeURIComponent(textoClaro);
 
-            window.open(
-                `https://api.whatsapp.com/send?phone=${telefone}&text=${texto}`,
-                "_blank"
-            );
-        } catch (err) {
-            console.error("Erro ao enviar orçamento:", err);
-            alert("Erro ao enviar o orçamento.");
-        }
-
+        window.open(
+            `https://api.whatsapp.com/send?phone=${telefone}&text=${texto}`,
+            "_blank"
+        );
     };
+
+
     const renderFormulario = () => (
         <div className="formulario-orcamento">
             <h3>Preencha seus dados</h3>
@@ -242,10 +243,11 @@ ${produtosTexto}
 
             <div className="carrinho-header">
                 <h3>Itens do Orçamento ({empresaSelecionada})</h3>
-                <button onClick={() => window.location.reload()} title="Recarregar">
+                <button className="btn-refresh-carrinho" onClick={() => window.location.reload()} title="Recarregar">
                     <FiRefreshCcw size={20} />
                 </button>
             </div>
+
 
             {carrinho.map((p) => (
                 <div key={p.id} className="item-carrinho">
@@ -305,28 +307,31 @@ ${produtosTexto}
                 </div>
             )}
             <section className="catalogo">
-                <button
-                    className="btn-carrinho-flutuante"
-                    onClick={() => setMostrarCarrinho(!mostrarCarrinho)}
-                    title="Ver orçamento"
-                >
-                    <div className="icone-com-texto">
-                        <FiShoppingCart size={32} />
-                        <span className="texto-carrinho">Carrinho</span>
-
-                        {carrinho.length > 0 && (
+                {carrinho.length > 0 && (
+                    <button
+                        className="btn-carrinho-flutuante"
+                        onClick={() => setMostrarCarrinho(!mostrarCarrinho)}
+                        title="Ver orçamento"
+                        style={{ display: mostrarCarrinho ? "none" : "flex" }}
+                    >
+                        <div className="icone-com-texto">
+                            <FiShoppingCart size={32} />
+                            <span className="texto-carrinho">Carrinho</span>
                             <span className="contador-carrinho">{carrinho.length}</span>
-                        )}
-                    </div>
-                </button>
+                        </div>
+                    </button>
+                )}
 
 
 
                 {loading ? (
-                    <div className="carregando">
-                        <p>Carregando orçamento...</p>
+                    <div className="carregando-spinner">
+                        <div className="spinner"></div>
+                        <p>Carregando produtos, aguarde...</p>
                     </div>
                 ) : (
+
+
                     <>
                         <h2>Produtos em Destaque</h2>
                         <div className="produtos-grid">
@@ -340,9 +345,13 @@ ${produtosTexto}
                         </div>
 
                         <h2>Frigorífico</h2>
+                        <p className="descricao-local">
+                            Linha pensada especialmente para empresas que buscam praticidade e variedade com confiança.
+                        </p>
                         <div className="linha-filtros">
                             <Filtros produtos={baseFrigorifico} onFiltroAtualizado={setFiltroFrigorifico} classeExtra="filtros-catalogo" />
                         </div>
+
                         <div className="produtos-grid">
                             {filtroFrigorifico.length > 0 ? (
                                 filtroFrigorifico.map(renderProduto)
@@ -354,9 +363,13 @@ ${produtosTexto}
                         </div>
 
                         <h2>Açougue</h2>
+                        <p className="descricao-local">
+                            Ideal para o preparo do dia a dia, churrascos ou eventos que pedem aquele corte especial.
+                        </p>
                         <div className="linha-filtros">
                             <Filtros produtos={baseAcougue} onFiltroAtualizado={setFiltroAcougue} classeExtra="filtros-catalogo" />
                         </div>
+
                         <div className="produtos-grid">
                             {filtroAcougue.length > 0 ? (
                                 filtroAcougue.map(renderProduto)

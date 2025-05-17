@@ -31,12 +31,15 @@
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .produto-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.08);
 }
+
 
 .imagem-fake {
   width: 100%;

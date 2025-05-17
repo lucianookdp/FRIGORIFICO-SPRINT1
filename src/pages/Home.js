@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 import "../styles/Banner.css";
 import "../styles/Home.css";
@@ -15,10 +16,11 @@ import api, { API_BASE } from "../api/api";
 import bannerImage from "../assets/images/banner.png";
 import bannerMobile from "../assets/images/banner2.png";
 
-//no bannerImage, tirar o 'Produtos de Guarapuava'
+// no bannerImage, tirar o 'Produtos de Guarapuava'
 
 const Home = () => {
   const [destaques, setDestaques] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const carregarDestaques = async () => {
@@ -58,7 +60,12 @@ const Home = () => {
         <div className="produtos-grid">
           {destaques.length > 0 ? (
             destaques.map((produto) => (
-              <div className="produto-card" key={produto.id}>
+              <div
+                className="produto-card"
+                key={produto.id}
+                onClick={() => navigate("/orcamento")}
+                style={{ cursor: "pointer" }}
+              >
                 <img
                   src={`${API_BASE}${produto.foto}`}
                   alt={produto.titulo}
