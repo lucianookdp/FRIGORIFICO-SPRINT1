@@ -1,8 +1,10 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Chatbot from "../components/Chatbot"; // Componente do chatbot
 import "../styles/Ajuda.css";
-import { FiPhone, FiMessageCircle } from "react-icons/fi"; // Retirei o FiMail
+import "../styles/Chatbot.css"; // Importa o CSS do chatbot
+import { FiPhone, FiMessageCircle } from "react-icons/fi";
 
 function Ajuda() {
   return (
@@ -93,6 +95,9 @@ function Ajuda() {
           </div>
         </section>
       </main>
+
+      {/* Chatbot flutuante estilo celular */}
+      <Chatbot />
 
       <Footer />
     </>
