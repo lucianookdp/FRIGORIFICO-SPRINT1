@@ -31,7 +31,7 @@ function Ajuda() {
           <div className="faq-item">
             <h3 className="faq-pergunta">Quais cortes de carne estão disponíveis?</h3>
             <p className="faq-resposta">
-              Trabalhamos com uma variedade de cortes bovinos, suínos e especiais. No catálogo, você encontra fotos, descrições e informações de cada produto.
+              Trabalhamos com uma variedade de cortes bovinos, suínos e aves. No catálogo, você encontra fotos, descrições e informações de cada produto.
             </p>
           </div>
 

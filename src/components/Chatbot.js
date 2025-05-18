@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaChevronUp } from "react-icons/fa";
+import { FaChevronUp, FaPaperPlane, FaTimes } from "react-icons/fa";
 import "../styles/Chatbot.css";
 
 const Chatbot = () => {
@@ -11,7 +11,7 @@ const Chatbot = () => {
     const [tempoRestante, setTempoRestante] = useState(null);
 
     const LIMITE_PERGUNTAS = 10;
-    const TEMPO_BLOQUEIO_MINUTOS = 60;
+    const TEMPO_BLOQUEIO_MINUTOS = 15;
 
     const formatarTempo = (totalSegundos) => {
         const h = Math.floor(totalSegundos / 3600);
@@ -70,10 +70,8 @@ const Chatbot = () => {
 
             if (diffMs < limiteMs) {
                 setBloqueado(true);
-
                 const restanteCalculado = Math.ceil((limiteMs - diffMs) / 1000);
                 const restante = tempoSalvo ? Math.min(parseInt(tempoSalvo), restanteCalculado) : restanteCalculado;
-
                 iniciarContador(restante);
             } else {
                 localStorage.removeItem("chatbotContador");
@@ -89,7 +87,7 @@ const Chatbot = () => {
                 {
                     de: "bot",
                     texto:
-                        "Olá! Sou seu assistente virtual. Você pode enviar até 10 perguntas. Após isso, será necessário aguardar um tempo."
+                        "Olá! Sou seu assistente virtual. Você pode enviar até 10 perguntas. Após isso, será necessário aguardar um tempinho."
                 }
             ]);
         }
@@ -166,14 +164,18 @@ const Chatbot = () => {
 
             {aberto && (
                 <div className="chatbot-janela">
-                    <div className="chatbot-cabecalho">Assistente Virtual - Frigorífico Padilha</div>
+                    <div className="chatbot-cabecalho">
+                        Assistente Virtual - Frigorífico Padilha
+                        <span className="chatbot-fechar-mobile" onClick={() => setAberto(false)}>
+                            <FaTimes />
+                        </span>
+                    </div>
 
                     {bloqueado && tempoRestante !== null && (
                         <div className="chatbot-contador-bloqueio">
                             <p>Você atingiu o limite de uso.<br />Tente novamente em:</p>
                             <strong>{formatarTempo(tempoRestante)}</strong>
                         </div>
-
                     )}
 
                     <div className="chatbot-conversa">
@@ -210,8 +212,8 @@ const Chatbot = () => {
                             onKeyDown={handleEnter}
                             disabled={bloqueado}
                         />
-                        <button onClick={enviarMensagem} disabled={bloqueado}>
-                            Enviar
+                        <button onClick={enviarMensagem} disabled={bloqueado} aria-label="Enviar">
+                            <FaPaperPlane />
                         </button>
                     </div>
                 </div>
