@@ -27,108 +27,81 @@
 
 .produtos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 32px;
-  justify-content: center;
-  align-items: stretch;
-  padding: 0 10px;
-  overflow: hidden; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  padding: 0 12px;
 }
 
 .produto-card {
-  background-color: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-  padding: 24px;
-  transition: box-shadow 0.3s ease;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
   height: 100%;
-  min-height: 100%; 
-}
-
-.produto-card:hover {
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-}
-
-.produto-card .imagem-produto {
-  width: 160px;
-  height: 160px;
-  object-fit: contain;
-  background-color: #ffffff;
-  padding: 8px;
-  border-radius: 12px;
-  border: 2px solid #ddd0c2;
-  margin-bottom: 25px;
 }
 
 .produto-card h3 {
-  font-size: 22px;
+  margin: 12px 0 8px;
   color: #27194e;
-  font-weight: 800;
-  margin-bottom: 10px;
-  text-align: center;
-  position: relative;
+  font-size: 16px;
 }
 
 .produto-card h3::after {
   content: "";
   display: block;
-  width: 160px;
-  height: 4px;
+  width: 50px;
+  height: 3px;
   background-color: #9b6e38;
-  margin: 12px auto 0 auto;
-  border-radius: 5px;
+  margin: 10px auto 0;
+  border-radius: 2px;
 }
 
 .produto-card .descricao {
-  font-size: 15.5px;
-  color: #444;
-  margin-top: 12px;
-  min-height: 60px;
-  text-align: center;
-  line-height: 1.5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0; 
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .produto-card .preco {
-  font-size: 18px;
-  font-weight: 700;
-  color: #9b6e38;
-  margin-top: 20px;
-  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #27194e;
 }
 
-/* Responsividade */
-@media (max-width: 1024px) {
-  .produtos-grid {
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  }
+.produto-card button {
+  padding: 8px 12px;
+  font-size: 13px;
+  background-color: #27194e;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: auto;
+  align-self: center;
+}
 
-  .produto-card .imagem-produto {
-    width: 140px;
-    height: 140px;
-  }
+.produto-card button:hover {
+  background-color: #1f1240;
+}
 
-  .produto-card h3 {
-    font-size: 20px;
-  }
-
-  .produto-card h3::after {
-    width: 100px;
-  }
-
-  .produto-card .descricao {
-    font-size: 15px;
-  }
-
-  .produto-card .preco {
-    font-size: 17px;
-  }
+.produto-card .imagem-produto {
+  width: 100%;
+  max-width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #f8f8f8;
+  padding: 6px;
+  margin: 0 auto 14px;
+  display: block;
 }
 
 @media (max-width: 768px) {
@@ -141,45 +114,15 @@
   }
 
   .produto-card {
-    padding: 20px;
-    margin-bottom: 28px;
-  }
-
-  .produto-card .imagem-produto {
-    width: 120px;
-    height: 120px;
+    padding: 12px;
   }
 
   .produto-card h3 {
-    font-size: 18px;
+    font-size: 15px;
   }
 
   .produto-card h3::after {
-    width: 80px;
-  }
-
-  .produto-card .descricao {
-    font-size: 13.5px;
-    min-height: auto;
-  }
-
-  .produto-card .preco {
-    font-size: 15.5px;
-  }
-}
-
-@media (max-width: 558px) {
-  .produtos-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .produto-card .imagem-produto {
-    width: 160px;
-    height: 160px;
-  }
-
-  .produto-card h3::after {
-    width: 60px;
+    width: 40px;
   }
 
   .produto-card .descricao {
@@ -187,6 +130,34 @@
   }
 
   .produto-card .preco {
-    font-size: 15px;
+    font-size: 13px;
+  }
+
+  .produto-card .imagem-produto {
+    max-width: 140px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .produto-card .imagem-produto {
+    max-width: 120px;
+    height: 120px;
+  }
+
+  .produto-card {
+    padding: 10px;
+  }
+
+  .produto-card h3 {
+    font-size: 14px;
+  }
+
+  .produto-card .descricao {
+    font-size: 12.5px;
+  }
+
+  .produto-card .preco {
+    font-size: 13px;
   }
 }
