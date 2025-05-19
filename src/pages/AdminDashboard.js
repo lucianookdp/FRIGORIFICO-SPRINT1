@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import AdminHeader from "../components/AdminHeader";
 import ProdutoModal from "../components/ProdutoModal";
 import Filtros from "../components/Filtros";
@@ -20,9 +21,19 @@ const AdminDashboard = () => {
   const [categoria, setCategoria] = useState("Carne Bovina");
   const [local, setLocal] = useState("Frigorifico");
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/admin-login");
+    }
+  }, []);
+
   useEffect(() => {
     buscarProdutos();
   }, []);
+
 
   const buscarProdutos = async () => {
     try {
@@ -181,10 +192,10 @@ const AdminDashboard = () => {
                 <td className="coluna-acoes">
                   <div className="botoes-wrapper">
                     <button className="btn-editar" onClick={() => editarProduto(p)}>
-                      <FaEdit /> 
+                      <FaEdit />
                     </button>
                     <button className="btn-remover" onClick={() => removerProduto(p.id)}>
-                      <FaTrash /> 
+                      <FaTrash />
                     </button>
                     <button
                       className={`btn-destaque ${p.destaque ? "ativo" : ""}`}

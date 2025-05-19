@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AdminHeader from "../components/AdminHeader";
-import Footer from "../components/Footer";
 import api from "../api/api";
 import "../styles/VerLogs.css";
 
 const VerLogs = () => {
   const [logs, setLogs] = useState([]);
   const [orcamentoSelecionado, setOrcamentoSelecionado] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/admin-login");
+    }
+  }, []);
 
   useEffect(() => {
     const fetchLogs = async () => {
@@ -99,7 +107,6 @@ const VerLogs = () => {
           </div>
         </div>
       )}
-
     </div>
   );
 };
