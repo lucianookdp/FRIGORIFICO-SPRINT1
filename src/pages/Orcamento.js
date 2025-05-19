@@ -165,8 +165,9 @@ const Orcamento = () => {
     const finalizarOrcamento = () => {
         const telefone =
             empresaSelecionada === "Frigorifico"
-                ? "554299388528"
-                : "554299061788";
+                ? "554291121372"
+                : "554299388528";
+
 
         const produtosTexto = carrinho
             .map((p) =>
