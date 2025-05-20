@@ -704,26 +704,150 @@ body.modal-open::before {
   box-shadow: none;
 }
 
+@media (max-width: 768px) {
+  .catalogo {
+    padding: 0 12px;
+    margin-top: 100px;
+  }
 
-@media (max-width: 480px) {
-  .card-produto img {
-    max-width: 120px;
-    height: 120px;
+  .descricao-local {
+    font-size: 14px;
+    margin-top: -6px;
+    margin-bottom: 20px;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  .produtos-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .card-produto {
+    padding: 12px;
+  }
+
+  .card-produto img {
+    max-width: 130px;
+    height: 130px;
+    margin-bottom: 12px;
+  }
+
+  .card-produto button {
+    width: 100%;
+    font-size: 14px;
     padding: 10px;
   }
 
-  .info-produto h3 {
-    font-size: 16px;
+  .carrinho-popup {
+    width: 94%;
+    max-height: 88vh;
+    padding: 16px;
+    border-radius: 12px;
   }
 
-  .descricao {
-    font-size: 12.5px;
+  .carrinho-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 16px;
   }
 
-  .preco {
+  .item-carrinho {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .item-carrinho span {
+    font-size: 14px;
+  }
+
+  .item-carrinho input {
+    font-size: 14px;
+    padding: 6px 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .info-carrinho-right {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .controle-quantidade {
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 14px;
+  }
+
+  .controle-quantidade button {
     font-size: 15px;
+    padding: 6px 12px;
+    flex: 1;
+  }
+
+  .controle-quantidade span {
+    font-size: 15px;
+    text-align: center;
+    flex: 1;
+  }
+
+  .btn-remover {
+    font-size: 13px;
+    padding: 8px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .formulario-orcamento {
+    gap: 12px;
+    margin-top: 14px;
+  }
+
+  .formulario-orcamento input,
+  .formulario-orcamento select {
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .formulario-orcamento button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .total {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .btn-carrinho-flutuante {
+    width: 62px;
+    height: 62px;
+    bottom: 70px;
+    right: 16px;
+    padding: 4px;
+  }
+
+  .texto-carrinho {
+    font-size: 10.5px;
+  }
+
+  .contador-carrinho {
+    font-size: 11px;
+    padding: 3px 6px;
+    top: -4px;
+    right: -6px;
+  }
+
+  .btn-fechar-carrinho {
+    top: 8px;
+    right: 8px;
+    font-size: 20px;
   }
 }
