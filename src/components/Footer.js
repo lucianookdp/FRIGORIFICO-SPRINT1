@@ -70,9 +70,13 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Direitos reservados */}
+      {/* Direitos reservados e aviso de privacidade */}
       <div className="footer-bottom">
         © {new Date().getFullYear()} Todos os direitos reservados — Padilha e Duda Frigorífico LTDA
+        <br />
+        <span className="aviso-privacidade">
+        Seus dados são utilizados apenas para fins de contato e orçamento. Garantimos sua privacidade.
+        </span>
       </div>
     </footer>
   );

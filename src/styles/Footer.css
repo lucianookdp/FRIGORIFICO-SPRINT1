@@ -103,6 +103,14 @@
   padding-top: 16px;
 }
 
+.footer-bottom .aviso-privacidade {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #ccc;
+}
+
+
 /* Responsivo */
 @media (max-width: 768px) {
   .footer-container {
