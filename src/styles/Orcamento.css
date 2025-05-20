@@ -33,8 +33,7 @@
   top: 80px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #4363ad;
-  /* azul médio da paleta */
+  background-color: #00e444;
   color: #fff;
   padding: 10px 20px;
   border-radius: 12px;
@@ -88,7 +87,6 @@ body.modal-open::before {
   transform: translate(-50%, -50%);
   width: 100%;
   max-width: 720px;
-  /* BEM MAIS LARGO */
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(39, 25, 78, 0.08);
@@ -174,21 +172,6 @@ body.modal-open::before {
   border-radius: 6px;
   border: 1px solid #bbb;
 }
-
-.item-carrinho button {
-  background: none;
-  color: #c00000;
-  font-size: 13px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.item-carrinho button:hover {
-  color: #800000;
-}
-
 
 .carrinho-popup h3 {
   color: #27194e;
@@ -621,6 +604,104 @@ body.modal-open::before {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* ==== NOVO LAYOUT DOS ITENS DO CARRINHO (pós-melhoria) ==== */
+
+.info-carrinho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 16px;
+}
+
+.info-carrinho-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #27194e; /* cor roxa escura da paleta */
+}
+
+.info-carrinho-left strong {
+  font-size: 16px;
+  font-weight: 700;
+  color: #27194e; /* aplica cor visível ao título */
+}
+
+.info-carrinho-left p {
+  font-size: 14px;
+  margin: 0;
+  color: #444; /* cor de leitura confortável */
+}
+
+
+.info-carrinho-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.controle-quantidade {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f4f4f4;
+  padding: 6px 12px;
+  border-radius: 8px;
+  min-width: 140px;
+  gap: 10px;
+}
+
+
+.controle-quantidade button {
+  background-color: #0034c2;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.controle-quantidade button:hover {
+  background-color: #00186f;
+}
+
+.controle-quantidade span {
+  font-size: 15px;
+  font-weight: 600;
+  color: #27194e;
+  user-select: none;
+  flex: 1;
+  text-align: center;
+}
+
+/* Botão remover minimalista */
+.btn-remover {
+  background: none;
+  color: #e60000;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-remover:hover {
+  color: #a00000;
+  text-decoration: underline;
+}
+
+/* Remove hover global herdado indevido */
+.item-carrinho button:not(.btn-remover):hover {
+  color: inherit;
+  transform: none;
+  box-shadow: none;
 }
 
 

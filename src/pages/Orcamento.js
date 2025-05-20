@@ -249,20 +249,29 @@ ${produtosTexto}
                 </button>
             </div>
 
-
+            {/* Lista de produtos no carrinho */}
             {carrinho.map((p) => (
                 <div key={p.id} className="item-carrinho">
-                    <span>{p.titulo}</span>
-                    <input
-                        type="number"
-                        min="1"
-                        value={p.quantidade}
-                        onChange={(e) => atualizarQuantidade(p.id, e.target.value)}
-                    />
-                    <button onClick={() => removerDoCarrinho(p.id)}>Remover</button>
+                    <div className="info-carrinho">
+                        <div className="info-carrinho-left">
+                            <strong>{p.titulo}</strong>
+                            <p className="info-preco">Valor unitário: R$ {Number(p.valorKg).toFixed(2)} / kg</p>
+                        </div>
+
+                        <div className="info-carrinho-right">
+                            <div className="controle-quantidade">
+                                <button onClick={() => atualizarQuantidade(p.id, Number(p.quantidade) - 1)} disabled={p.quantidade <= 1}>−</button>
+                                <span>{p.quantidade} kg</span>
+                                <button onClick={() => atualizarQuantidade(p.id, Number(p.quantidade) + 1)}>+</button>
+                            </div>
+                            <button className="btn-remover" onClick={() => removerDoCarrinho(p.id)}>Remover</button>
+                        </div>
+                    </div>
                 </div>
+
             ))}
 
+            {/* Formulário aparece abaixo dos produtos, se ainda não enviado */}
             {!formularioEnviado ? (
                 renderFormulario()
             ) : (
@@ -277,6 +286,8 @@ ${produtosTexto}
             )}
         </div>
     );
+
+
 
 
     const renderProduto = (produto) => {
